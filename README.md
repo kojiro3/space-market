@@ -33,12 +33,12 @@
 | period    | integer    | null: false                            |
 | hour      | text       |                                        |
 | postal_code | integer  | null: false                            |
-| prefectures | string   | null: false                            |
+| prefecture | string    | null: false                            |
 | city      | string     | null: false                            |
 | town      | string     | null: false                            |
 | building  | string     |                                        |
 | tel       | string     | null: false                            |
-| fax       | string     | null: false                            |
+| fax       | string     |                                        |
 | access    | string     | null: false                            |
 | owner_id  | references | foreign_key: true                      |
 
