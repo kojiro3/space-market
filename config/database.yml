@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  socket: /var/lib/mysql/mysql.sock
   database: space-market_production
-  username: space-market
-  password: <%= ENV['SPACE-MARKET_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
