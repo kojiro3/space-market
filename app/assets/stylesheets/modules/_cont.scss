@@ -1,0 +1,191 @@
+.cont {
+  &__top {
+    margin-top: 60px;
+    &__logo {
+      width: 360px;
+      margin: 0 auto 0;
+    }
+    &__text {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-top: 24px;
+      color: $dark;
+    }
+  }
+  &__type {
+    width: 94%;
+    max-width: 1110px;
+    padding: 0 12px 24px;
+    margin: 0 auto 16px;
+    &__list {
+      position: relative;
+      text-align: center;
+      padding: 0 8px;
+      min-height: 1px;
+      float: left;
+      &--up {
+        width: calc( 33.33333% - 16px );
+        position: relative;
+      }
+      &--down {
+        width: calc( 25% - 16px );
+      }
+      &__button {
+        min-height: 36px;
+        background-color: #f6f6f6;
+        border-radius: 3px;
+        width: 100%;
+        display: block;
+        margin-top: 16px;
+        padding: 16px 2px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+        &__logo {
+          width: 36px;
+          height: 36px;
+          vertical-align: middle;
+        }
+        &__name {
+          display: inline-block;
+          font-size: 16px;
+          font-weight: bold;
+          vertical-align: middle;
+          text-align: left;
+          color: $dark;
+          margin-left: 8px;
+        }
+        &__number {
+          display: block;
+          font-size: 10px;
+          color: #a3a3a3;
+          text-align: left;
+        }
+        .fa-angle-right {
+          position: absolute;
+          color: $blue;
+          top: 44px;
+          right: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  &__space {
+    padding: 24px 0;
+    border-bottom: 1px solid #eaeaea;
+    &--gray {
+      background-color: #f6f6f6;
+    }
+    &__unit {
+      width: 94%;
+      max-width: 1110px;
+      margin: 16px auto 24px;
+      &__title {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        color: $dark;
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+      &__main {
+        float: left;
+        padding: 0 12px;
+        position: relative;
+        &:hover {
+          opacity: 0.7;
+        }
+        &--3 {
+          width: calc( 33.333333% - 24px );
+        }
+        &--4 {
+          width: calc( 25% - 24px );
+        }
+        &--button {
+          background-color: $white;
+          padding-bottom: 8px;
+          margin-bottom: 16px;
+          position: relative;
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+          border-radius: 3px;
+        }
+        &__column {
+          position: relative;
+          overflow: hidden;
+          border-radius: 2px 2px 0 0;
+          &--3 {
+            height: 230px;
+          }
+          &--4 {
+            height: 320px;
+          }
+          &__image {
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: 100%;
+            &--3 {
+              width: 100%;
+              height: auto;
+            }
+            &--4 {
+              width: auto;
+              height: 100%;
+            }
+          }
+          &__price {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            background-color: $black;
+            color: $white;
+            padding: 3px 10px;
+            border-radius: 2px;
+          }
+          &__text {
+            font-size: 14px;
+            margin: 8px;
+            overflow: hidden;
+            line-height: 1.4;
+            max-height: 2.4em;
+            min-height: 2.4em;
+          }
+          &__body {
+            margin: 8px 10px 12px;
+            &__intro {
+              font-size: 14px;
+              font-weight: bold;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+            &__data {
+              float: left;
+              font-size: 11px;
+              margin-right: 5px;
+              .fa {
+                color: #d0d1cf;
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+      &__more {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 16px 0;
+        &--button {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+
+
