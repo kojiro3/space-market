@@ -62,9 +62,14 @@
         }
       }
     }
+    &__logo {
+      float: left;
+      width: 180px;
+      margin-left: 10px;
+    }
   }
 }
 
 .fa-envelope {
-  color: #d0d1cf;
+  color: $light-gray;
 }

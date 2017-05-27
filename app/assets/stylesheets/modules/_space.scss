@@ -1,0 +1,165 @@
+.space {
+  &__intro {
+    font-size: 10px;
+    border-top: 1px solid #eaeaea;
+    padding: 6px 3px;
+    margin-top: 3px;
+  }
+  &__image {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    &__this {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &__info {
+    color: $dark;
+    &__nav {
+      border-bottom: 1px solid #eaeaea;
+      &__main {
+        width: 94%;
+        max-width: 1110px;
+        margin: 0 auto;
+        &__list {
+          font-size: 16px;
+          float: left;
+          padding: 12px 12px;
+          position: relative;
+        }
+      }
+    }
+    &__title {
+      border-bottom: 1px solid #eaeaea;
+      &__wrapper {
+        width: 94%;
+        max-width: 1110px;
+        margin: 0 auto;
+        &__main {
+          padding: 24px 0;
+          width: 100%;
+          &__name {
+            font-size: 20px;
+          }
+          &__list {
+            font-size: 12px;
+            float: left;
+            margin: 10px 12px 0 0;
+            .fa {
+              color: $light-gray;
+            }
+          }
+        }
+      }
+    }
+    &__detail {
+      background-color: $gray;
+      &__wrapper {
+        width: 94%;
+        max-width: 1110px;
+        margin: 0 auto;
+        position: relative;
+        &__body {
+          padding: 20px 0;
+          font-size: 14px;
+          width: 66.6%;
+          border-bottom: 1px solid #eaeaea;
+          &__about {
+            width: 16.6%;
+            float: left;
+            position: relative;
+          }
+          &__text {
+            text-align: 1.5;
+            position: relative;
+            width: 83.3%;
+            float: left;
+            &--bold {
+              font-weight: bold;
+              float: left;
+            }
+            &__price {
+              float: right;
+              background-color: $blue;
+              color: $white;
+              padding: 4px 24px;
+              font-weight: bold;
+              border-radius: 2px;
+            }
+          }
+        }
+        &__side {
+          width: 345px;
+          position: absolute;
+          top: 20px;
+          right: 0;
+          &__request {
+            padding-top: 16px;
+            background-color: $white;
+            border: 1px solid $light-gray;
+            &__price {
+              font-size: 14px;
+              &--bold {
+                font-weight: bold;
+                font-size: 22px;
+                margin: 0 -4px 0 32px;
+              }
+            }
+            &__button {
+              background-color: $blue;
+              color: $white;
+              width: 300px;
+              text-align: center;
+              padding: 12px 0;
+              font-weight: bold;
+              margin: 12px auto 24px;
+              border-radius: 3px;
+            }
+          }
+          &__owner {
+            margin-top: 12px;
+            background-color: $white;
+            border: 1px solid $light-gray;
+            padding: 12px 0 24px;
+            &__image {
+              width: 50px;
+              height: 50px;
+              border-radius: 50px;
+              float: left;
+              margin: 0 12px 0 16px;
+            }
+            &__intro {
+              font-size: 12px;
+            }
+            &__name {
+              font-size: 14px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    &__access {
+      &__wrapper {
+        width: 94%;
+        max-width: 1110px;
+        margin: 0 auto;
+        padding: 6px 0 12px;
+        &__body {
+          padding-top: 6px;
+          font-size: 14px;
+          &__name {
+            float: left;
+            width: 100px;
+            color: #b3b3b4;;
+          }
+        }
+      }
+    }
+  }
+}
