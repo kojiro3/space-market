@@ -1,4 +1,18 @@
-=render 'header'
+.header
+  =render 'header-top'
+  .header__nav.clear-fix
+    %ul.row
+      %li.header__nav__list
+        = link_to root_path, class: 'header__nav__list__button' do
+          スペースを投稿する
+          %i.fa.fa-sort-desc
+      %li.header__nav__list
+        = link_to root_path do
+          %i.fa.fa-envelope.fa-lg
+      %li.header__nav__list
+        = link_to root_path do
+          Kojiro Aoki
+          %i.fa.fa-sort-desc
 
 .cont
   =render 'cont-top'

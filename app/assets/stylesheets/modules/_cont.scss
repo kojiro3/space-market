@@ -34,7 +34,7 @@
       }
       &__button {
         min-height: 36px;
-        background-color: #f6f6f6;
+        background-color: $gray;
         border-radius: 3px;
         width: 100%;
         display: block;
@@ -75,7 +75,7 @@
     padding: 24px 0;
     border-bottom: 1px solid #eaeaea;
     &--gray {
-      background-color: #f6f6f6;
+      background-color: $gray;
     }
     &__unit {
       width: 94%;
@@ -168,7 +168,7 @@
               font-size: 11px;
               margin-right: 5px;
               .fa {
-                color: #d0d1cf;
+                color: $light-gray;
                 display: inline-block;
               }
             }
