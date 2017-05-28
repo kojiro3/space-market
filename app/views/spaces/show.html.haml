@@ -2,19 +2,10 @@
   =render 'header-top'
   .header__nav.clear-fix
     %ul.row
-      %li.header__nav__list
-        = link_to root_path, class: 'header__nav__list__button' do
-          スペースを投稿する
-          %i.fa.fa-sort-desc
-      %li.header__nav__list
-        = link_to root_path do
-          %i.fa.fa-envelope.fa-lg
-      %li.header__nav__list
-        = link_to root_path do
-          Kojiro Aoki
-          %i.fa.fa-sort-desc
+      =render 'spaces/header-nav'
     .header__nav__logo
-      = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
+      = link_to root_path do
+        = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
 
 .space
   %P.space__intro 【神楽坂・飯田橋】手ぶらでＯＫ！ビストロ風の空間とプロ仕様のキッチン　基本調味料、ラップ、リード等はご用意しております！
