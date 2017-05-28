@@ -1,0 +1,15 @@
+%li.header__nav__list
+  = link_to new_owner_registration_path, class: 'header__nav__list__button' do
+    スペースを投稿する
+    %i.fa.fa-sort-desc
+%li.header__nav__list
+  = link_to root_path do
+    %i.fa.fa-envelope.fa-lg
+%li.header__nav__list
+  - if user_signed_in?
+    = link_to root_path do
+      = current_user.name
+      %i.fa.fa-sort-desc
+  - else
+    = link_to new_user_registration_path do
+      ログイン
