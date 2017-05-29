@@ -7,9 +7,16 @@
     %i.fa.fa-envelope.fa-lg
 %li.header__nav__list
   - if user_signed_in?
-    = link_to root_path do
+    .more
       = current_user.name
       %i.fa.fa-sort-desc
+      %ul.more__list
+        %li
+          = link_to new_user_registration_path do
+            %p.more__list__text マイページ
+        %li
+          = link_to destroy_user_session_path do
+            %p.more__list__text ログアウト
   - else
     = link_to new_user_registration_path do
       ログイン
