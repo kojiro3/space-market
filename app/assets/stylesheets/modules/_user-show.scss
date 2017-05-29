@@ -1,0 +1,76 @@
+.user-page {
+  color: $dark;
+  &__top {
+    background-color: #595959;
+    color: $white;
+    height: 44px;
+    font-size: 14px;
+    padding-right: 20px;
+    &__left {
+      &__list {
+        float: left;
+        font-weight: bold;
+        line-height: 44px;
+        &--image {
+          width: 36px;
+          height: 36px;
+          background-color: $gray;
+          border-radius: 40px;
+          margin: 4px 8px 0;
+        }
+      }
+    }
+    &__right {
+      &__list {
+        float: right;
+        line-height: 44px;
+        margin-left: 16px;
+        color: $white;
+        &:hover {
+          color: $green;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  &__body {
+    min-height: 300px;
+    height: calc( 100vh - 45px - 44px - 156px );
+    background-color: $gray;
+    &__left {
+      float: left;
+      width: 250px;
+      margin: 0 auto;
+      &__image {
+        width: 130px;
+        height: 130px;
+        background-color: $white;
+        border-radius: 130px;
+        margin: 20px auto 16px;
+      }
+      &__name {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+      &__edit {
+        color: $blue;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 12px;
+      }
+    }
+    &__right {
+      float: left;
+      &__title {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+      &__text {
+        font-size: 14px;
+        color: $light-gray;
+        margin-top: 16px;
+      }
+    }
+  }
+}
