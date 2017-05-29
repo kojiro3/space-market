@@ -1,22 +1,48 @@
 %li.header__nav__list
-  = link_to new_owner_session_path, class: 'header__nav__list__button' do
-    スペースを投稿する
-    %i.fa.fa-sort-desc
-%li.header__nav__list
-  = link_to root_path do
-    %i.fa.fa-envelope.fa-lg
-%li.header__nav__list
-  - if user_signed_in?
+  - if owner_signed_in?
     .more
-      = current_user.name
-      %i.fa.fa-sort-desc
+      = link_to '', class: 'header__nav__list__button' do
+        スペースを掲載する
+        %i.fa.fa-sort-desc
       %ul.more__list
         %li
-          = link_to user_path(current_user) do
-            %p.more__list__text マイページ
+          = link_to new_space_path do
+            %p.more__list__text スペース投稿
         %li
           = link_to destroy_user_session_path, method: 'delete' do
             %p.more__list__text ログアウト
   - else
+    .more
+      = link_to '', class: 'header__nav__list__button' do
+        スペースを掲載する
+        %i.fa.fa-sort-desc
+      %ul.more__list
+        %li
+          = link_to new_owner_registration_path do
+            %p.more__list__text 新規登録
+        %li
+          = link_to new_owner_session_path do
+            %p.more__list__text ログイン
+%li.header__nav__list
+  = link_to root_path do
+    %i.fa.fa-envelope.fa-lg
+%li.header__nav__list
+- if user_signed_in?
+  .more
+    %li.header__nav__list
+      = current_user.name
+    %i.fa.fa-sort-desc
+    %ul.more__list
+      %li
+        = link_to user_path(current_user) do
+          %p.more__list__text マイページ
+      %li
+        = link_to destroy_user_session_path, method: 'delete' do
+          %p.more__list__text ログアウト
+- else
+  %li.header__nav__list
+    = link_to new_user_registration_path do
+      新規登録
+  %li.header__nav__list
     = link_to new_user_session_path do
       ログイン

@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   }
   root 'spaces#index'
   resources :users, only: [:show]
+  resources :spaces, only: [:index, :new]
 end
