@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'spaces#index'
+  resources :users, only: [:show]
 end

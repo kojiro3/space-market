@@ -8,3 +8,23 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = yield
+
+    .footer
+      .footer__info
+        .footer__info__logo
+          = image_tag '//cdn.spacemarket.net/assets/service/logo-white-e45bfa7a1d154ca89423b11ddcb15ae7.svg'
+        .footer__info__sign.clear-fix
+          - if user_signed_in?
+          -else
+            = link_to new_user_registration_path do
+              %p.footer__info__sign__text.footer__info__sign__text--user
+                アカウント登録する
+          - if owner_signed_in?
+          -else
+            = link_to new_owner_registration_path do
+              %p.footer__info__sign__text.footer__info__sign__text--owner
+                ホスト登録する
+      .footer__copy
+        = image_tag '//cdn.spacemarket.net/assets/service/footer/logo_spmkt-b1fc5a1187112c5c9aedc8bfc787d2b2.png', class: 'footer__copy__logo'
+        %span.footer__copy__text  © Space Market, Inc. 
+

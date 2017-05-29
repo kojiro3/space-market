@@ -1,0 +1,13 @@
+.user-page__top
+  %ul.user-page__top__left
+    %li.user-page__top__left__list.user-page__top__left__list--image
+      = image_tag "#{@user.image}"
+    %li.user-page__top__left__list
+      = @user.name
+  %ul.user-page__top__right.clear-fix
+    %li
+      = link_to edit_user_registration_path do
+        %p.user-page__top__right__list 設定
+    %li
+      = link_to user_path(@user) do
+        %p.user-page__top__right__list マイページ
