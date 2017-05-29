@@ -75,6 +75,7 @@
 }
 
 .more {
+  cursor: pointer;
 }
 .more__list {
   display: none;
@@ -93,4 +94,7 @@
 
 .more:hover ul.more__list {
   display: block;
+}
+.more:hover p.header__nav__list__link {
+  opacity: 0.7;
 }

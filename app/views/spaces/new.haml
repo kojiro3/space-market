@@ -1,1 +1,19 @@
-スペース投稿
+.header__nav.clear-fix
+  %ul.row
+    = render 'spaces/header-nav'
+  .header__nav__logo
+    = link_to root_path do
+      = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
+
+.my-page
+  = render '/owners/owner-top'
+
+.space-form
+  .space-form__left
+    %h1 会場を追加
+  .space-form__right
+    = form_for @space do |f|
+      .space-form__right__title.clear-fix
+        = f.label 'chat_group_name', '必須', class: 'space-form__right__title__must'
+        %p.space-form__right__title__text カバー写真
+

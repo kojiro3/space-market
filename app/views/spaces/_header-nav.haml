@@ -1,9 +1,10 @@
 %li.header__nav__list
   - if owner_signed_in?
     .more
-      = link_to '', class: 'header__nav__list__button' do
-        スペースを掲載する
-        %i.fa.fa-sort-desc
+      .header__nav__list__button
+        %p.header__nav__list__link
+          スペースを掲載する
+          %i.fa.fa-sort-desc
       %ul.more__list
         %li
           = link_to new_space_path do
@@ -30,15 +31,16 @@
 - if user_signed_in?
   .more
     %li.header__nav__list
-      = current_user.name
-    %i.fa.fa-sort-desc
-    %ul.more__list
-      %li
-        = link_to user_path(current_user) do
-          %p.more__list__text マイページ
-      %li
-        = link_to destroy_user_session_path, method: 'delete' do
-          %p.more__list__text ログアウト
+      %p.header__nav__list__link
+        = current_user.name
+        %i.fa.fa-sort-desc
+      %ul.more__list
+        %li
+          = link_to user_path(current_user) do
+            %p.more__list__text マイページ
+        %li
+          = link_to destroy_user_session_path, method: 'delete' do
+            %p.more__list__text ログアウト
 - else
   %li.header__nav__list
     = link_to new_user_registration_path do

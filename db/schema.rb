@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527092044) do
+ActiveRecord::Schema.define(version: 20170529104516) do
 
   create_table "owners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +29,26 @@ ActiveRecord::Schema.define(version: 20170527092044) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_owners_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                      null: false
+    t.string   "image"
+    t.string   "type",                      null: false
+    t.text     "text",        limit: 65535, null: false
+    t.text     "hour",        limit: 65535
+    t.integer  "postal_code",               null: false
+    t.string   "prefecture",                null: false
+    t.string   "city",                      null: false
+    t.string   "town",                      null: false
+    t.string   "building"
+    t.string   "tel",                       null: false
+    t.text     "access",      limit: 65535, null: false
+    t.integer  "price",                     null: false
+    t.integer  "owner_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["owner_id"], name: "index_spaces_on_owner_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,4 +70,5 @@ ActiveRecord::Schema.define(version: 20170527092044) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "spaces", "owners"
 end
