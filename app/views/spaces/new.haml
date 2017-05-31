@@ -8,12 +8,102 @@
 .my-page
   = render '/owners/owner-top'
 
-.space-form
+.space-form.clear-fix
   .space-form__left
-    %h1 会場を追加
+    %h1.space-form__left__title 会場を追加
+    = link_to '#link-to-basis' do
+      %h2.space-form__left__nav 基本情報
+    = link_to '#link-to-access' do
+      %h2.space-form__left__nav 住所・アクセス
   .space-form__right
     = form_for @space do |f|
-      .space-form__right__title.clear-fix
-        = f.label 'chat_group_name', '必須', class: 'space-form__right__title__must'
-        %p.space-form__right__title__text カバー写真
-
+      .space-form__right__title#link-to-basis
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text カバー写真
+        %span.space-form__right__title__plus 外観や会場全体を表す画像ををアップロードして下さい。
+      .space-form__right__field
+        = f.label :image, class: 'space-form__right__field__image' do
+          = f.file_field :image, class: 'space-form__right__field__image__button', style: 'display:none;'
+          %i.fa.fa-camera.fa-3x
+          %p.space-form__right__field__image__text カバー写真を選択
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 名称
+        %span.space-form__right__title__plus 50文字以内。会場・建物名を入力してください。
+      .space-form__right__field
+        = f.text_field :name, class: 'space-form__right__field__name w500', placeholder: 'スペースマーケット、渋谷ビル等'
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 会場の用途
+      .space-form__right__field
+        = f.label :type, class: 'space-form__right__field__type', for: 'button-party' do
+          = f.radio_button :type, 'イベントスペース', class: 'space-form__right__field__type__radio', id: 'button-party'
+          パーティー
+        = f.label :type, class: 'space-form__right__field__type', for: 'button-meeting' do
+          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-meeting'
+          会議
+        = f.label :type, class: 'space-form__right__field__type', for: 'button-photo' do
+          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-photo'
+          写真撮影
+        = f.label :type, class: 'space-form__right__field__type', for: 'button-location' do
+          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-location'
+          ロケ撮影
+        = f.label :type, class: 'space-form__right__field__type', for: 'button-event' do
+          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-event'
+          イベント
+        = f.label :type, class: 'space-form__right__field__type', for: 'button-hotel' do
+          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-hotel'
+          宿泊
+        = f.label :type, class: 'space-form__right__field__type', for: 'button-others' do
+          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-others'
+          その他
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 会場について
+        %span.space-form__right__title__plus 10文字以上800文字以内。
+      .space-form__right__field
+        = f.text_area :text, class: 'space-form__right__field__text', placeholder: '大きな窓から入る自然光が印象的なスタジオです。イベントやセミナーはもちろん、撮影、展示会にも利用いただけます。'
+      .space-form__right__title
+        %span.space-form__right__title__term.space-form__right__title__term--free 任意
+        %span.space-form__right__title__text 営業時間について
+      .space-form__right__field
+        = f.text_area :hour, class: 'space-form__right__field__hour', placeholder: '平日 9:00-21:00 土日 10:00-20:00'
+      .space-form__right__title#link-to-access
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 郵便番号
+        %span.space-form__right__title__plus ハイフン無しの半角数字。
+      .space-form__right__field
+        = f.text_field :postal_code, class: 'space-form__right__field__postal', placeholder: '1600023'
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 都道府県・市区町村
+      .space-form__right__field
+        = f.label :prefecture, class: 'space-form__right__field__prefecture--label' do
+          = f.select :prefecture,  [["東京都", "tokyo"], ["神奈川県", "kanagawa"]], {}, { class: 'space-form__right__field__prefecture' }
+          %i.fa.fa-sort-desc
+        = f.text_field :city, class: 'space-form__right__field__city', placeholder: '新宿区'
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 町名・番地
+      .space-form__right__field
+        = f.text_field :town, class: 'space-form__right__field__town', placeholder: '西新宿6-15-1'
+      .space-form__right__title
+        %span.space-form__right__title__term.space-form__right__title__term--free 任意
+        %span.space-form__right__title__text ビル名・部屋番号
+      .space-form__right__field
+        = f.text_field :building, class: 'space-form__right__field__building w500', placeholder: 'ラ・トゥール新宿608号室'
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 電話番号
+        %span.space-form__right__title__plus この情報は予約が確定次第ゲストに送信される利用日程表で開示されます。
+      .space-form__right__field
+        = f.text_field :tel, class: 'space-form__right__field__tel w500', placeholder: '03-1234-5678'
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text アクセス
+        %span.space-form__right__title__plus 最寄駅からの歩き方や高速道路の出口、所要時間などを入力してください。
+      .space-form__right__field
+        = f.text_area :access, class: 'space-form__right__field__access', placeholder: 'JR新宿駅西口より徒歩7分'
+      .space-form__right__field
+        .space-form__right__field__submit
+          = f.submit '送信', class: 'space-form__right__field__submit__button'
