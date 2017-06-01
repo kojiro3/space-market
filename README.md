@@ -39,7 +39,7 @@
 | tel       | string     | null: false                            |
 | access    | text       | null: false                            |
 | price     | integer    | null: false                            |
-| body      | text       | null: false                            |
+| body      | string     |                                        |
 | number    | integer    | null: false                            |
 | owner_id  | references | foreign_key: true                      |
 

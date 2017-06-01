@@ -9,7 +9,10 @@
 
 .space
   %P.space__intro
-    = "【#{@space.access}】#{@space.text}"
+    - if @space.body
+      = @space.body
+    - else
+      = @space.name
   .space__image
     = image_tag "#{@space.image}", class: 'space__image__this', alt: 'main-image'
   .space__info
@@ -29,7 +32,10 @@
       .space__info__title__wrapper
         .space__info__title__wrapper__main
           %h1.space__info__title__wrapper__main__name#title-buttom
-            = "【#{@space.access}】#{@space.text}"
+            - if @space.body
+              = @space.body
+            - else
+              = @space.name
           %ul.clear-fix
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-building
@@ -37,7 +43,8 @@
                 = @space.name
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-user
-              %span.space__info__title__wrapper__main__list__text 〜24人
+              %span.space__info__title__wrapper__main__list__text
+                = "〜#{@space.number}人"
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-map-marker
               %span.space__info__title__wrapper__main__list__text
@@ -53,19 +60,13 @@
             %h2 会場について
           .space__info__detail__wrapper__body__text
             %p
-              Bistro風　２０席（１５坪）のお店をそのまま再現。厨房設備はプロ使用。
-              %br
-              基本調味料、消耗品、プロジェクター、マイク完備（無料）
-              %br
-              照明・音響を含めた空間センスを感じて頂けます。
-              %br
-              料理教室、ワイン教室、貸切パーティー、各種発表会、撮影スタジオ等にご利用ください。
+              = @space.text
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
             %h2 収容人数
           .space__info__detail__wrapper__body__text
             %p
-              〜24人
+              = "〜#{@space.number}人"
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
             %h2 営業時間
