@@ -1,13 +1,13 @@
 .my-page__top
   %ul.my-page__top__left
     %li.my-page__top__left__list.my-page__top__left__list--image
-      = image_tag "#{@user.image}"
+      = image_tag "#{current_owner.image}"
     %li.my-page__top__left__list
-      = @user.name
+      = current_owner.name
   %ul.my-page__top__right.clear-fix
     %li
-      = link_to edit_user_registration_path do
+      = link_to edit_owner_registration_path do
         %p.my-page__top__right__list 設定
     %li
-      = link_to user_path(@user) do
+      = link_to owner_path(current_owner) do
         %p.my-page__top__right__list マイページ

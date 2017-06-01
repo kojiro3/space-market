@@ -1,7 +1,7 @@
-.user-page {
+.my-page {
   color: $dark;
   &__top {
-    background-color: #595959;
+    background-color: $light-dark;
     color: $white;
     height: 44px;
     font-size: 14px;
@@ -68,7 +68,7 @@
       }
       &__text {
         font-size: 14px;
-        color: $light-gray;
+        color: $dark-gray;
         margin-top: 16px;
       }
     }

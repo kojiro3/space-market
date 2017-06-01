@@ -1,0 +1,156 @@
+.space-form {
+  color: $dark;
+  &__left {
+    float: left;
+    width: 200px;
+    min-height: 300px;
+    height: calc( 100vh - 45px - 44px - 156px );
+    &__title {
+      font-size: 20px;
+      height: 70px;
+      line-height: 70px;
+      padding-left: 16px;
+      border-bottom: solid 1px $gray;
+    }
+    &__nav {
+      font-size: 16px;
+      height: 50px;
+      line-height: 50px;
+      border-bottom: solid 1px $gray;
+      padding-left: 16px;
+      &:hover {
+        background-color: $gray;
+      }
+    }
+  }
+  &__right {
+    float: left;
+    padding-left: 24px;
+    background-color: $gray;
+    width: calc( 100% - 200px - 24px );
+    overflow-y: scroll;
+    min-height: 300px;
+    height: calc( 100vh - 45px - 44px - 156px );
+    &__title {
+      padding-top: 24px;
+      &__term {
+        background-color: #e95175;
+        color: $white;
+        padding: 4px;
+        font-size: 12px;
+        border-radius: 2px;
+        &--free {
+          background-color: $dark-gray;
+        }
+      }
+      &__text {
+        font-size: 20px;
+      }
+      &__plus {
+        font-size: 12px;
+        color: $dark-gray;
+      }
+    }
+    &__field {
+      margin-top: 16px;
+      font-size: 14px;
+      &__image {
+        background-color: $light-dark;
+        color: $white;
+        width: 120px;
+        height: 120px;
+        display: block;
+        border-radius: 4px;
+        text-align: center;
+        .fa {
+          margin-top: 24px;
+        }
+        &__text {
+          font-weight: bold;
+          margin-top: 6px;
+        }
+      }
+      input[type='text'] {
+        height: 36px;
+        line-height: 1.5;
+      }
+      .w500 {
+        width: 500px;
+      }
+      input[type='text'] {
+        padding-left: 8px;
+      }
+      &__type {
+        margin-right: 30px;
+        font-size: 16px;
+        &__radio {
+          margin-right: 6px;
+        }
+      }
+      textarea {
+        height: 64px;
+        padding: 8px;
+        line-height: 1.5;
+      }
+      &__text {
+        width: 700px;
+      }
+      &__hour {
+        width: 500px;
+      }
+      .w110 {
+        width: 110px;
+      }
+      &__prefecture {
+        padding: 8px 30px 8px 10px;
+        height: 39px;
+        background-color: $white;
+        border-radius: 0;
+        line-height: 14px;
+        -webkit-appearance: none;
+        &--label {
+          position: relative;
+          .fa {
+            position: absolute;
+            top: 4px;
+            right: 20px;
+            color: $blue;
+            line-height: 0;
+            font-size: 16px;
+          }
+        }
+      }
+      &__city {
+        width: 300px;
+      }
+      &__access {
+        width: 500px;
+      }
+      &__submit {
+          width: 220px;
+          margin: 36px auto 28px;
+        &__button {
+          height: 39px;
+          width: 220px;
+          background-color: $green;
+          border: none;
+          -webkit-appearance: none;
+          color: $white;
+          border-radius: 3px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+:placeholder-shown {
+    color: $dark-gray; }
+::-webkit-input-placeholder {
+    color: $dark-gray; }
+:-moz-placeholder {
+    color: $dark-gray; }
+::-moz-placeholder {
+    color: $dark-gray; }
+:-ms-input-placeholder {
+    color: $dark-gray; }

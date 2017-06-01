@@ -6,17 +6,17 @@
       = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
 
 .my-page
-  = render 'user-top'
+  = render 'owner-top'
   .my-page__body
     .my-page__body__left.clear-fix
       .my-page__body__left__image
-        = image_tag "#{@user.image}"
+        = image_tag "#{@owner.image}"
       .my-page__body__left__name
-        = @user.name
-      = link_to edit_user_registration_path do
+        = @owner.name
+      = link_to edit_owner_registration_path do
         %p.my-page__body__left__edit プロフィールを編集
     .my-page__body__right
       .my-page__body__right__title
-        予約一覧
+        スペース一覧
       .my-page__body__right__text
-        予約はありません。
+        スペースはありません。

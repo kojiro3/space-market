@@ -27,10 +27,9 @@
 |  Column   |  Type      |              Option                    |
 |:----------|:----------:|:---------------------------------------|
 | name      | string     | null: false                            |
-| image     | string     | null: false                            |
-| type      | string     | null: false                            |
+| image     | string     |                                        |
+| purpose   | string     | null: false                            |
 | text      | text       | null: false                            |
-| period    | integer    | null: false                            |
 | hour      | text       |                                        |
 | postal_code | integer  | null: false                            |
 | prefecture | string    | null: false                            |
@@ -38,8 +37,8 @@
 | town      | string     | null: false                            |
 | building  | string     |                                        |
 | tel       | string     | null: false                            |
-| fax       | string     |                                        |
-| access    | string     | null: false                            |
+| access    | text       | null: false                            |
+| price     | integer    | null: false                            |
 | owner_id  | references | foreign_key: true                      |
 
 ### Association
