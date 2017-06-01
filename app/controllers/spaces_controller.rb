@@ -1,6 +1,7 @@
 class SpacesController < ApplicationController
 
   def index
+    @spaces = Space.order("created_at DESC")
   end
 
   def new
@@ -15,6 +16,10 @@ class SpacesController < ApplicationController
       flash.now[:alert] = 'スペースの投稿に失敗しました'
       render :new
     end
+  end
+
+  def show
+    @space = Space.find(params[:id])
   end
 
   private
