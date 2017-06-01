@@ -33,6 +33,12 @@
       .space-form__right__field
         = f.text_field :name, class: 'space-form__right__field__name w500', placeholder: 'スペースマーケット、渋谷ビル等'
       .space-form__right__title
+        %span.space-form__right__title__term.space-form__right__title__term--free 任意
+        %span.space-form__right__title__text スペースの見出し
+        %span.space-form__right__title__plus 64文字以内。未入力時は会場名と同じ。
+      .space-form__right__field
+        = f.text_field :body, class: 'space-form__right__field__name w500', placeholder: 'スペースマーケット、渋谷ビル等'
+      .space-form__right__title
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 会場の用途
       .space-form__right__field
@@ -71,11 +77,19 @@
       .space-form__right__title
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 料金
-        %span.space-form__right__title__plus 1時間当たり(半角数字)。
+        %span.space-form__right__title__plus 1時間当たり、半角数字のみ。
       .space-form__right__field
         %span ¥
         = f.text_field :price, class: 'space-form__right__field__price w110', placeholder: '5000'
         %span /時間
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 収容人数
+        %span.space-form__right__title__plus 半角数字のみ。
+      .space-form__right__field
+        %span 〜
+        = f.text_field :number, class: 'space-form__right__field__price w110', placeholder: '30'
+        %span 人
       .space-form__right__title#link-to-access
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 郵便番号
@@ -87,7 +101,7 @@
         %span.space-form__right__title__text 都道府県・市区町村
       .space-form__right__field
         = f.label :prefecture, class: 'space-form__right__field__prefecture--label' do
-          = f.select :prefecture,  [["東京都", "tokyo"], ["神奈川県", "kanagawa"]], {}, { class: 'space-form__right__field__prefecture' }
+          = f.select :prefecture,  [["東京都", "東京都"], ["神奈川県", "神奈川県"]], {}, { class: 'space-form__right__field__prefecture' }
           %i.fa.fa-sort-desc
         = f.text_field :city, class: 'space-form__right__field__city', placeholder: '新宿区'
       .space-form__right__title

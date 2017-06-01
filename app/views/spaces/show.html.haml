@@ -8,39 +8,51 @@
         = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
 
 .space
-  %P.space__intro 【神楽坂・飯田橋】手ぶらでＯＫ！ビストロ風の空間とプロ仕様のキッチン　基本調味料、ラップ、リード等はご用意しております！
+  %P.space__intro
+    - if @space.body
+      = @space.body
+    - else
+      = @space.name
   .space__image
-    = image_tag '', class: 'space__image__this', alt: 'main-image'
+    = image_tag "#{@space.image}", class: 'space__image__this', alt: 'main-image'
   .space__info
     .space__info__nav
       .space__info__nav__main
         %ul.clear-fix
           %li.space__info__nav__main__list
-            = link_to root_path do
+            = link_to '#title-buttom' do
               概要
           %li.space__info__nav__main__list
-            = link_to root_path do
+            = link_to '#price-buttom' do
               価格
           %li.space__info__nav__main__list
-            = link_to root_path do
+            = link_to '#access-buttom' do
               アクセス
     .space__info__title
       .space__info__title__wrapper
         .space__info__title__wrapper__main
-          %h1.space__info__title__wrapper__main__name 【神楽坂・飯田橋】手ぶらでＯＫ！ビストロ風の空間とプロ仕様のキッチン　基本調味料、ラップ、リード等はご用意しております！
+          %h1.space__info__title__wrapper__main__name#title-buttom
+            - if @space.body
+              = @space.body
+            - else
+              = @space.name
           %ul.clear-fix
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-building
-              %span.space__info__title__wrapper__main__list__text SHARE KITCHEN シェアキッチン マリンブルースタジオビル301
+              %span.space__info__title__wrapper__main__list__text
+                = @space.name
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-user
-              %span.space__info__title__wrapper__main__list__text 〜24人
+              %span.space__info__title__wrapper__main__list__text
+                = "〜#{@space.number}人"
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-map-marker
-              %span.space__info__title__wrapper__main__list__text 東京都千代田区
+              %span.space__info__title__wrapper__main__list__text
+                = "#{@space.prefecture}#{@space.city}"
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-folder
-              %span.space__info__title__wrapper__main__list__text イベントスペース
+              %span.space__info__title__wrapper__main__list__text
+                = @space.purpose
     .space__info__detail
       .space__info__detail__wrapper
         .space__info__detail__wrapper__body.clear-fix
@@ -48,46 +60,43 @@
             %h2 会場について
           .space__info__detail__wrapper__body__text
             %p
-              Bistro風　２０席（１５坪）のお店をそのまま再現。厨房設備はプロ使用。
-              %br
-              基本調味料、消耗品、プロジェクター、マイク完備（無料）
-              %br
-              照明・音響を含めた空間センスを感じて頂けます。
-              %br
-              料理教室、ワイン教室、貸切パーティー、各種発表会、撮影スタジオ等にご利用ください。
+              = @space.text
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
             %h2 収容人数
           .space__info__detail__wrapper__body__text
             %p
-              〜24人
+              = "〜#{@space.number}人"
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
             %h2 営業時間
           .space__info__detail__wrapper__body__text
             %p
-              10:00〜22:00
+              = @space.hour
         .space__info__detail__wrapper__body.clear-fix
-          .space__info__detail__wrapper__body__about
+          .space__info__detail__wrapper__body__about#price-buttom
             %h2 価格
           .space__info__detail__wrapper__body__text
             %p.space__info__detail__wrapper__body__text--bold
-              基本プラン
-            %p.space__info__detail__wrapper__body__text__price ¥5,000/時間~
+              = "¥#{@space.price}/時間"
         .space__info__detail__wrapper__side
           .space__info__detail__wrapper__side__request
-            %span.space__info__detail__wrapper__side__request__price--bold ¥5,000
+            %span.space__info__detail__wrapper__side__request__price--bold
+              = "¥#{@space.price}"
             %span.space__info__detail__wrapper__side__request__price /時間
             %p.space__info__detail__wrapper__side__request__button 予約リクエスト
           .space__info__detail__wrapper__side__owner
-            = image_tag '', class: 'space__info__detail__wrapper__side__owner__image', alt: 'owner-image'
+            = image_tag "#{@space.owner.image}", class: 'space__info__detail__wrapper__side__owner__image', alt: 'owner-image'
             %p.space__info__detail__wrapper__side__owner__intro このスペースの管理者
-            %p.space__info__detail__wrapper__side__owner__name Kojiro Aoki
+            %p.space__info__detail__wrapper__side__owner__name
+              = @space.owner.name
     .space__info__access
       .space__info__access__wrapper
-        .space__info__access__wrapper__body.clear-fix
+        .space__info__access__wrapper__body.clear-fix#access-buttom
           %p.space__info__access__wrapper__body__name 住所
-          %p.space__info__access__wrapper__body__text 東京都千代田区富士見2-4-12 マリンブルースタジオビル３０１
+          %p.space__info__access__wrapper__body__text
+            = "#{@space.prefecture}#{@space.city}#{@space.town}#{@space.building}"
         .space__info__access__wrapper__body.clear-fix
           %p.space__info__access__wrapper__body__name アクセス
-          %p.space__info__access__wrapper__body__text JR、地下鉄　飯田橋駅より徒歩5分
+          %p.space__info__access__wrapper__body__text
+            = @space.access

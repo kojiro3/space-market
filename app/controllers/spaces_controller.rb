@@ -1,6 +1,7 @@
 class SpacesController < ApplicationController
 
   def index
+    @spaces = Space.order("created_at DESC")
   end
 
   def new
@@ -17,9 +18,13 @@ class SpacesController < ApplicationController
     end
   end
 
+  def show
+    @space = Space.find(params[:id])
+  end
+
   private
 
   def space_params
-    params.require(:space).permit(:name, :image, :purpose, :text, :hour, :postal_code, :prefecture, :city, :town, :building, :tel, :access, :price).merge(purpose: params[:purpose])
+    params.require(:space).permit(:name, :image, :purpose, :text, :hour, :postal_code, :prefecture, :city, :town, :building, :tel, :access, :price, :body, :number).merge(purpose: params[:purpose])
   end
 end

@@ -35,21 +35,25 @@
   .cont__space__unit
     %h2.cont__space__unit__title パーティー
     %ul.row.clear-fix
-      %li.cont__space__unit__main.cont__space__unit__main--3
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--3
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
-              %p.cont__space__unit__main__column__price ¥5,000/時間
-            .cont__space__unit__main__column__body
-              %h3.cont__space__unit__main__column__body__intro 【神楽坂・飯田橋】手ぶらでＯＫ！ビストロ風の空間とプロ仕様のキッチン　基本調味料、ラップ、リード等はご用意しております！
-              %ul.clear-fix
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-user
-                  %span.cont__space__unit__main__column__data__body__people 〜24人
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-map-marker
-                  %span.cont__space__unit__main__column__body__sdata__access 東京都千代田区
+      - @spaces.each do |space|
+        %li.cont__space__unit__main.cont__space__unit__main--3
+          = link_to space_path(space) do
+            .cont__space__unit__main--button
+              .cont__space__unit__main__column.cont__space__unit__main__column--3
+                = image_tag "#{space.image}", class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
+                %span.cont__space__unit__main__column__price
+                  = "¥#{space.price}/時間"
+              .cont__space__unit__main__column__body
+                %h3.cont__space__unit__main__column__body__intro
+                  = space.text
+                %ul.clear-fix
+                  %li.cont__space__unit__main__column__body__data
+                    %i.fa.fa-user
+                    %span.cont__space__unit__main__column__data__body__people 〜24人
+                  %li.cont__space__unit__main__column__body__data
+                    %i.fa.fa-map-marker
+                    %span.cont__space__unit__main__column__body__sdata__access
+                      = "#{space.prefecture}#{space.city}"
       %li.cont__space__unit__main.cont__space__unit__main--3
         = link_to root_path do
           .cont__space__unit__main--button

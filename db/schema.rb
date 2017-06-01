@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531094551) do
+ActiveRecord::Schema.define(version: 20170601041449) do
 
   create_table "owners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20170531094551) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "purpose",                   null: false
+    t.integer  "number",                    null: false
+    t.string   "body"
     t.index ["owner_id"], name: "index_spaces_on_owner_id", using: :btree
   end
 
