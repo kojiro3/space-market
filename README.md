@@ -28,7 +28,7 @@
 |:----------|:----------:|:---------------------------------------|
 | name      | string     | null: false                            |
 | image     | string     |                                        |
-| type      | string     | null: false                            |
+| purpose   | string     | null: false                            |
 | text      | text       | null: false                            |
 | hour      | text       |                                        |
 | postal_code | integer  | null: false                            |

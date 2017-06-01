@@ -18,7 +18,7 @@
   .space-form__right
     = form_for @space do |f|
       .space-form__right__title#link-to-basis
-        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__term.space-form__right__title__term--free 任意
         %span.space-form__right__title__text カバー写真
         %span.space-form__right__title__plus 外観や会場全体を表す画像ををアップロードして下さい。
       .space-form__right__field
@@ -36,26 +36,26 @@
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 会場の用途
       .space-form__right__field
-        = f.label :type, class: 'space-form__right__field__type', for: 'button-party' do
-          = f.radio_button :type, 'イベントスペース', class: 'space-form__right__field__type__radio', id: 'button-party'
+        = f.label :purpose, class: 'space-form__right__field__type', for: 'button-party' do
+          = radio_button_tag :purpose, 'パーティー', class: 'space-form__right__field__type__radio', id: 'button-party'
           パーティー
-        = f.label :type, class: 'space-form__right__field__type', for: 'button-meeting' do
-          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-meeting'
+        = f.label :purpose, class: 'space-form__right__field__type', for: 'button-meeting' do
+          = radio_button_tag :purpose, '会議', class: 'space-form__right__field__type__radio', id: 'button-meeting'
           会議
-        = f.label :type, class: 'space-form__right__field__type', for: 'button-photo' do
-          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-photo'
+        = f.label :purpose, class: 'space-form__right__field__type', for: 'button-photo' do
+          = radio_button_tag :purpose, '写真撮影', class: 'space-form__right__field__type__radio', id: 'button-photo'
           写真撮影
-        = f.label :type, class: 'space-form__right__field__type', for: 'button-location' do
-          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-location'
+        = f.label :purpose, class: 'space-form__right__field__type', for: 'button-location' do
+          = radio_button_tag :purpose, 'ロケ撮影', class: 'space-form__right__field__type__radio', id: 'button-location'
           ロケ撮影
-        = f.label :type, class: 'space-form__right__field__type', for: 'button-event' do
-          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-event'
+        = f.label :purpose, class: 'space-form__right__field__type', for: 'button-event' do
+          = radio_button_tag :purpose, 'イベント', class: 'space-form__right__field__type__radio', id: 'button-event'
           イベント
-        = f.label :type, class: 'space-form__right__field__type', for: 'button-hotel' do
-          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-hotel'
+        = f.label :purpose, class: 'space-form__right__field__type', for: 'button-hotel' do
+          = radio_button_tag :purpose, '宿泊', class: 'space-form__right__field__type__radio', id: 'button-hotel'
           宿泊
-        = f.label :type, class: 'space-form__right__field__type', for: 'button-others' do
-          = f.radio_button :type, '会議', class: 'space-form__right__field__type__radio', id: 'button-others'
+        = f.label :purpose, class: 'space-form__right__field__type', for: 'button-others' do
+          = radio_button_tag :purpose, 'その他', class: 'space-form__right__field__type__radio', id: 'button-others'
           その他
       .space-form__right__title
         %span.space-form__right__title__term 必須
@@ -68,12 +68,20 @@
         %span.space-form__right__title__text 営業時間について
       .space-form__right__field
         = f.text_area :hour, class: 'space-form__right__field__hour', placeholder: '平日 9:00-21:00 土日 10:00-20:00'
+      .space-form__right__title
+        %span.space-form__right__title__term 必須
+        %span.space-form__right__title__text 料金
+        %span.space-form__right__title__plus 1時間当たり(半角数字)。
+      .space-form__right__field
+        %span ¥
+        = f.text_field :price, class: 'space-form__right__field__price w110', placeholder: '5000'
+        %span /時間
       .space-form__right__title#link-to-access
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 郵便番号
         %span.space-form__right__title__plus ハイフン無しの半角数字。
       .space-form__right__field
-        = f.text_field :postal_code, class: 'space-form__right__field__postal', placeholder: '1600023'
+        = f.text_field :postal_code, class: 'space-form__right__field__postal w110', placeholder: '1600023'
       .space-form__right__title
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 都道府県・市区町村
