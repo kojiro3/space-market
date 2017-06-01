@@ -60,7 +60,7 @@
             %h2 会場について
           .space__info__detail__wrapper__body__text
             %p
-              = @space.text
+              = simple_format(@space.text)
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
             %h2 収容人数
@@ -72,7 +72,7 @@
             %h2 営業時間
           .space__info__detail__wrapper__body__text
             %p
-              = @space.hour
+              = simple_format(@space.hour)
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about#price-buttom
             %h2 価格
