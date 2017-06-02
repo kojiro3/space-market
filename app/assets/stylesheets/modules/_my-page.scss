@@ -67,9 +67,21 @@
         margin-top: 20px;
       }
       &__text {
-        font-size: 14px;
-        color: $dark-gray;
         margin-top: 16px;
+        &--name {
+          font-size: 18px;
+          color: $blue;
+        }
+        &--none {
+          font-size: 14px;
+          color: $dark-gray;
+        }
+        &--date {
+          font-size: 12px;
+          color: $blue;
+          margin-bottom: 14px;
+          font-weight: bold;
+        }
       }
     }
   }

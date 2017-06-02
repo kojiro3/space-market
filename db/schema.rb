@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601035615) do
+ActiveRecord::Schema.define(version: 20170601054737) do
 
   create_table "owners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 20170601035615) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_owners_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "year",       null: false
+    t.integer  "month",      null: false
+    t.integer  "day",        null: false
+    t.integer  "start",      null: false
+    t.integer  "finish",     null: false
+    t.integer  "user_id"
+    t.integer  "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_reservations_on_space_id", using: :btree
+    t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
   create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -72,5 +86,7 @@ ActiveRecord::Schema.define(version: 20170601035615) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "reservations", "spaces"
+  add_foreign_key "reservations", "users"
   add_foreign_key "spaces", "owners"
 end

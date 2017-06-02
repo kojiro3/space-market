@@ -1,145 +1,90 @@
 .cont__space.cont__space--gray
   .cont__space__unit
-    %h2.cont__space__unit__title スタッフのおすすめ
-    %ul.row.clear-fix
-      %li.cont__space__unit__main.cont__space__unit__main--4
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--4
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--4'
-            %h3.cont__space__unit__main__column__text 格安で借りられるレンタルスペース・会場まとめ
-      %li.cont__space__unit__main.cont__space__unit__main--4
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--4
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--4'
-            %h3.cont__space__unit__main__column__text キッチンが使えるレンタルスペースまとめ
-      %li.cont__space__unit__main.cont__space__unit__main--4
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--4
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--4'
-            %h3.cont__space__unit__main__column__text 手ぶらでバーベキューのできるレンタルスペースまとめ
-      %li.cont__space__unit__main.cont__space__unit__main--4
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--4
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--4'
-            %h3.cont__space__unit__main__column__text 人気の貸し会議室
+    %h2.cont__space__unit__title#party パーティー
+    - @spaces.party.each do |space|
+      = render space
     .cont__space__unit__more
-      = link_to root_path, class: 'cont__space__unit__more--button' do
-        %span.cont__space__unit__more__text スタッフのおすすめをもっと見る
-        %i.fa.fa-angle-right.fa-lg
+      - if @spaces.party.last
+        = link_to root_path, class: 'cont__space__unit__more--button' do
+          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+          %i.fa.fa-angle-right.fa-lg
+      - else
+        %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
 
 .cont__space
   .cont__space__unit
-    %h2.cont__space__unit__title パーティー
-    %ul.row.clear-fix
-      - if @spaces.last
-        - @spaces.each do |space|
-          %li.cont__space__unit__main.cont__space__unit__main--3
-            = link_to space_path(space) do
-              .cont__space__unit__main--button
-                .cont__space__unit__main__column.cont__space__unit__main__column--3
-                  = image_tag "#{space.image}", class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
-                  %span.cont__space__unit__main__column__price
-                    = "¥#{space.price}/時間"
-                .cont__space__unit__main__column__body
-                  %h3.cont__space__unit__main__column__body__intro
-                    = space.text
-                  %ul.clear-fix
-                    %li.cont__space__unit__main__column__body__data
-                      %i.fa.fa-user
-                      %span.cont__space__unit__main__column__data__body__people 〜24人
-                    %li.cont__space__unit__main__column__body__data
-                      %i.fa.fa-map-marker
-                      %span.cont__space__unit__main__column__body__sdata__access
-                        = "#{space.prefecture}#{space.city}"
-      %li.cont__space__unit__main.cont__space__unit__main--3
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--3
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
-              %p.cont__space__unit__main__column__price ¥1,000~ ¥4,000/時間
-            .cont__space__unit__main__column__body
-              %h3.cont__space__unit__main__column__body__intro 【駒沢大学】地下ワンフロアーなので周りを気にせず楽しめます!!※下北沢店OPENしました!!
-              %ul.clear-fix
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-user
-                  %span.cont__space__unit__main__column__data__body__people 〜18人
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-map-marker
-                  %span.cont__space__unit__main__column__body__sdata__access 東京都世田谷区
-      %li.cont__space__unit__main.cont__space__unit__main--3
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--3
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
-              %p.cont__space__unit__main__column__price ¥3,800~ ¥8,800/時間
-            .cont__space__unit__main__column__body
-              %h3.cont__space__unit__main__column__body__intro 【秋葉原徒歩7分】騒げる一軒家まるまる借切！キッチン有り/イベント/パーティー/女子会/ロケ撮影/少人数可/浅草橋駅 東京駅近く
-              %ul.clear-fix
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-user
-                  %span.cont__space__unit__main__column__data__body__people 〜35人
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-map-marker
-                  %span.cont__space__unit__main__column__body__sdata__access 東京都千代田区
+    %h2.cont__space__unit__title#meeting 会議
+    - @spaces.meeting.each do |space|
+      = render space
     .cont__space__unit__more
-      = link_to root_path, class: 'cont__space__unit__more--button' do
-        %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
-        %i.fa.fa-angle-right.fa-lg
+      - if @spaces.meeting.last
+        = link_to root_path, class: 'cont__space__unit__more--button' do
+          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+          %i.fa.fa-angle-right.fa-lg
+      - else
+        %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
 
 .cont__space.cont__space--gray
   .cont__space__unit
-    %h2.cont__space__unit__title 会議
-    %ul.row.clear-fix
-      %li.cont__space__unit__main.cont__space__unit__main--3
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--3
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
-              %p.cont__space__unit__main__column__price ¥400~ ¥1,600/時間
-            .cont__space__unit__main__column__body
-              %h3.cont__space__unit__main__column__body__intro 【マリブ】渋谷駅徒歩5分。WiFi・巨大モニター・ホワイトボード・wiiを完備した遊び心ある西海岸風の会議室。
-              %ul.clear-fix
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-user
-                  %span.cont__space__unit__main__column__data__body__people 〜12人
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-map-marker
-                  %span.cont__space__unit__main__column__body__sdata__access 東京都渋谷区
-      %li.cont__space__unit__main.cont__space__unit__main--3
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--3
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
-              %p.cont__space__unit__main__column__price ¥400~ ¥1,600/時間
-            .cont__space__unit__main__column__body
-              %h3.cont__space__unit__main__column__body__intro 【HIDAMARI】渋谷 5分 Wi-Fi 電源 プロジェクター 無料の明るい貸し会議室
-              %ul.clear-fix
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-user
-                  %span.cont__space__unit__main__column__data__body__people 〜16人
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-map-marker
-                  %span.cont__space__unit__main__column__body__sdata__access 東京都渋谷区
-      %li.cont__space__unit__main.cont__space__unit__main--3
-        = link_to root_path do
-          .cont__space__unit__main--button
-            .cont__space__unit__main__column.cont__space__unit__main__column--3
-              = image_tag '', class: 'cont__space__unit__main__column__image cont__space__unit__main__column__image--3'
-              %p.cont__space__unit__main__column__price ¥400~ ¥1,600/時間
-            .cont__space__unit__main__column__body
-              %h3.cont__space__unit__main__column__body__intro 【モルディブ】渋谷センター街 Wi-Fi、電源完備 レンタルスペース 貸し会議室
-              %ul.clear-fix
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-user
-                  %span.cont__space__unit__main__column__data__body__people 〜12人
-                %li.cont__space__unit__main__column__body__data
-                  %i.fa.fa-map-marker
-                  %span.cont__space__unit__main__column__body__sdata__access 東京都渋谷区
+    %h2.cont__space__unit__title#photo 写真撮影
+    - @spaces.photo.each do |space|
+      = render space
     .cont__space__unit__more
-      = link_to root_path, class: 'cont__space__unit__more--button' do
-        %span.cont__space__unit__more__text 会議で利用できるスペースをもっと見る
-        %i.fa.fa-angle-right.fa-lg
+      - if @spaces.photo.last
+        = link_to root_path, class: 'cont__space__unit__more--button' do
+          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+          %i.fa.fa-angle-right.fa-lg
+      - else
+        %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
+
+.cont__space
+  .cont__space__unit
+    %h2.cont__space__unit__title#location ロケ撮影
+    - @spaces.location.each do |space|
+      = render space
+    .cont__space__unit__more
+      - if @spaces.location.last
+        = link_to root_path, class: 'cont__space__unit__more--button' do
+          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+          %i.fa.fa-angle-right.fa-lg
+      - else
+        %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
+
+.cont__space.cont__space--gray
+  .cont__space__unit
+    %h2.cont__space__unit__title#event イベント
+    - @spaces.event.each do |space|
+      = render space
+    .cont__space__unit__more
+      - if @spaces.event.last
+        = link_to root_path, class: 'cont__space__unit__more--button' do
+          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+          %i.fa.fa-angle-right.fa-lg
+      - else
+        %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
+
+.cont__space
+  .cont__space__unit
+    %h2.cont__space__unit__title#stay 宿泊
+    - @spaces.stay.each do |space|
+      = render space
+    .cont__space__unit__more
+      - if @spaces.stay.last
+        = link_to root_path, class: 'cont__space__unit__more--button' do
+          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+          %i.fa.fa-angle-right.fa-lg
+      - else
+        %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
+
+.cont__space.cont__space--gray
+  .cont__space__unit
+    %h2.cont__space__unit__title#other その他
+    - @spaces.other.each do |space|
+      = render space
+    .cont__space__unit__more
+      - if @spaces.other.last
+        = link_to root_path, class: 'cont__space__unit__more--button' do
+          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+          %i.fa.fa-angle-right.fa-lg
+      - else
+        %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
