@@ -47,23 +47,6 @@
 
 * belongs_to :owner
 
-* has_many :plans
-
-* has_many :reservations
-
-## plan table
-
-|  Column   |  Type      |              Option                    |
-|:----------|:----------:|:---------------------------------------|
-| name      | string     | null: false                            |
-| price_hour | integer   |                                        |
-| price_day | integer    |                                        |
-| space_id  | references | foreign_key: true                      |
-
-### Association
-
-* belongs_to :space
-
 * has_many :reservations
 
 ## reservation table
@@ -81,5 +64,3 @@
 * belongs_to :user
 
 * belongs_to :space
-
-* belongs_to :plan
