@@ -19,4 +19,10 @@
       .my-page__body__right__title
         スペース一覧
       .my-page__body__right__text
-        スペースはありません。
+        - if @spaces.last
+          - @spaces.each do |space|
+            = link_to space_path(space) do
+              %p.my-page__body__right__text--name
+                = space.name
+        - else
+          %p.my-page__body__right__text--none スペースはありません。

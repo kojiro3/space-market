@@ -19,4 +19,12 @@
       .my-page__body__right__title
         予約一覧
       .my-page__body__right__text
-        予約はありません。
+        - if @reservations.last
+          - @reservations.each do |reservation|
+            = link_to space_reservation_path(reservation.space.id, reservation.id) do
+              %p.my-page__body__right__text--name
+                = reservation.space.name
+              %p.my-page__body__right__text--date
+                = "#{reservation.year}/#{reservation.month}/#{reservation.day} #{reservation.start}:00〜#{reservation.finish}:00"
+        - else
+          %p.my-page__body__right__text--none 予約はありません。
