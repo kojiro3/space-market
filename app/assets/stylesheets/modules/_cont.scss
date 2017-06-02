@@ -183,6 +183,11 @@
         &--button {
           color: $blue;
         }
+        &__text {
+          &--none {
+            color: $dark-gray;
+          }
+        }
       }
     }
   }
