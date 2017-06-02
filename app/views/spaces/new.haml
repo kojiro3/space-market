@@ -101,7 +101,7 @@
         %span.space-form__right__title__text 都道府県・市区町村
       .space-form__right__field
         = f.label :prefecture, class: 'space-form__right__field__prefecture--label' do
-          = f.select :prefecture,  [["東京都", "東京都"], ["神奈川県", "神奈川県"]], {}, { class: 'space-form__right__field__prefecture' }
+          = f.select :prefecture, [["東京都", "東京都"], ["神奈川県", "神奈川県"]], {}, { class: 'space-form__right__field__prefecture' }
           %i.fa.fa-sort-desc
         = f.text_field :city, class: 'space-form__right__field__city', placeholder: '新宿区'
       .space-form__right__title
