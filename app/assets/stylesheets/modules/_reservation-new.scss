@@ -5,6 +5,7 @@
   color: $dark;
   min-height: 300px;
   height: calc( 100vh - 165px - 156px );
+  overflow-y: scroll;
   &__left {
     float: left;
     &__info {
@@ -103,9 +104,64 @@
           -webkit-appearance: none;
           color: $white;
           border-radius: 3px;
-          font-size: 18px;
+          font-size: 16px;
           font-weight: bold;
-          padding: 8px 32px;
+          padding: 12px 32px;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+    &__confirm {
+      width: 600px;
+      background-color: $white;
+      padding: 20px;
+      &__body {
+        border-bottom: 1px dotted $light-gray;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        &__title {
+          width: 160px;
+          float: left;
+        }
+        &__text {
+          font-weight: bold;
+          float: left;
+          &--price {
+            font-size: 18px;
+          }
+          &--sub {
+            font-size: 14px;
+            font-weight: normal;
+          }
+        }
+      }
+      &__button {
+        &__text {
+          float: left;
+          color: $white;
+          font-size: 14px;
+          font-weight: bold;
+          width: 160px;
+          text-align: center;
+          margin-left: 20px;
+          padding: 10px 0;
+          border-radius: 3px;
+          margin-top: 20px;
+          &--top {
+            background-color: $blue;
+            &:hover {
+              background-color: #87CEEB;
+            }
+          }
+          &--user {
+            background-color: $green;
+            &:hover {
+              background-color: #90EE90;
+            }
+          }
         }
       }
     }

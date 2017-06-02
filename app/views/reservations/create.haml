@@ -1,0 +1,36 @@
+.header
+  =render 'spaces/header-top'
+  .header__nav.clear-fix
+    %ul.row
+      =render 'spaces/header-nav'
+    .header__nav__logo
+      = link_to root_path do
+        = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
+
+.reservation.clear-fix
+  .reservation__left
+    .reservation__left__info.clear-fix
+      %p.reservation__left__info__title 予約したスペース
+      = link_to space_path(@space), class: 'reservation__left__info__body' do
+        = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
+        %p.reservation__left__info__body__text
+          = @space.body
+  .reservation__right
+    %h2.reservation__right__title 予約内容確認
+    .reservation__right__confirm
+      .reservation__right__confirm__body.clear-fix
+        %p.reservation__right__confirm__body__title 利用期間
+        %p.reservation__right__confirm__body__text
+          = "#{@reservation.year}/#{@reservation.month}/#{@reservation.day} #{@reservation.start}:00〜#{@reservation.finish}:00"
+      .reservation__right__confirm__body.clear-fix
+        %p.reservation__right__confirm__body__title 料金
+        .reservation__right__confirm__body__text
+          %p.reservation__right__confirm__body__text--price
+            = "¥#{@space.price * (@reservation.finish - @reservation.start)}"
+          %p.reservation__right__confirm__body__text--sub
+            = "(税込価格 ¥#{(@space.price * (@reservation.finish - @reservation.start) * 1.08).round})"
+      .reservation__right__confirm__button.clear-fix
+        = link_to root_path do
+          %p.reservation__right__confirm__button__text.reservation__right__confirm__button__text--top トップページへ
+        = link_to user_path(current_user) do
+          %p.reservation__right__confirm__button__text.reservation__right__confirm__button__text--user マイページへ
