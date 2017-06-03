@@ -162,6 +162,12 @@
               background-color: #90EE90;
             }
           }
+          &--cancel {
+            background-color: $dark-gray;
+            &:hover {
+              background-color: $light-gray;
+            }
+          }
         }
       }
     }

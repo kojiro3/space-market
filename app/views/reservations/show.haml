@@ -34,3 +34,5 @@
           %p.reservation__right__confirm__button__text.reservation__right__confirm__button__text--top トップページへ
         = link_to user_path(current_user) do
           %p.reservation__right__confirm__button__text.reservation__right__confirm__button__text--user マイページへ
+        = link_to "/spaces/#{@space.id}/reservations/#{@reservation.id}", method: 'delete' do
+          %p.reservation__right__confirm__button__text.reservation__right__confirm__button__text--cancel 予約取り消し
