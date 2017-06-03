@@ -17,6 +17,16 @@
           background-color: $gray;
           border-radius: 40px;
           margin: 4px 8px 0;
+          position: relative;
+          overflow: hidden;
+          &--this {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: 100%;
+          }
         }
       }
     }
@@ -47,6 +57,16 @@
         background-color: $white;
         border-radius: 130px;
         margin: 20px auto 16px;
+        position: relative;
+        overflow: hidden;
+        &--this {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: auto;
+          height: 100%;
+        }
       }
       &__name {
         font-size: 20px;
@@ -71,6 +91,7 @@
         &--name {
           font-size: 18px;
           color: $blue;
+          margin-bottom: 14px;
         }
         &--none {
           font-size: 14px;

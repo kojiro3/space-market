@@ -1,7 +1,7 @@
 .my-page__top
   %ul.my-page__top__left
     %li.my-page__top__left__list.my-page__top__left__list--image
-      = image_tag "#{current_owner.image}"
+      = image_tag "#{current_owner.image}", class: 'my-page__body__left__image--this'
     %li.my-page__top__left__list
       = current_owner.name
   %ul.my-page__top__right.clear-fix

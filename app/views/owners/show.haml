@@ -10,7 +10,7 @@
   .my-page__body
     .my-page__body__left.clear-fix
       .my-page__body__left__image
-        = image_tag "#{@owner.image}"
+        = image_tag "#{@owner.image}", class: 'my-page__body__left__image--this'
       .my-page__body__left__name
         = @owner.name
       = link_to edit_owner_registration_path do

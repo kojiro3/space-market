@@ -20,6 +20,13 @@
             = f.text_field :name, autofocus: true
         .field
           .field-label
+            = f.label :image
+          .field-input
+            = f.label :image, class: '' do
+              = f.file_field :image, class: '', style: 'display:none;'
+              %i.fa.fa-camera.fa-2x
+        .field
+          .field-label
             = f.label :email
           .field-input
             = f.email_field :email
