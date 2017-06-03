@@ -16,4 +16,6 @@ class Space < ApplicationRecord
   scope :event, -> { where(purpose: 'イベント') }
   scope :stay, -> { where(purpose: '宿泊') }
   scope :other, -> { where(purpose: 'その他') }
+
+  mount_uploader :image, ImageUploader
 end
