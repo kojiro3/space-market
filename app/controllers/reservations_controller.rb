@@ -21,6 +21,12 @@ class ReservationsController < ApplicationController
     @space = @reservation.space
   end
 
+  def destroy
+    reservation = Reservation.find(params[:id])
+    reservation.destroy if reservation.user_id == current_user.id
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def reservation_params

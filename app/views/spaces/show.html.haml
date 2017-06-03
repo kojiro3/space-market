@@ -84,8 +84,12 @@
             %span.space__info__detail__wrapper__side__request__price--bold
               = "¥#{@space.price}"
             %span.space__info__detail__wrapper__side__request__price /時間
-            = link_to new_space_reservation_path(@space) do
-              %p.space__info__detail__wrapper__side__request__button 予約リクエスト
+            - if user_signed_in?
+              = link_to new_space_reservation_path(@space) do
+                %p.space__info__detail__wrapper__side__request__button 予約リクエスト
+            - else
+              = link_to new_user_session_path do
+                %p.space__info__detail__wrapper__side__request__button 予約リクエスト
           .space__info__detail__wrapper__side__owner
             = image_tag "#{@space.owner.image}", class: 'space__info__detail__wrapper__side__owner__image', alt: 'owner-image'
             %p.space__info__detail__wrapper__side__owner__intro このスペースの管理者
