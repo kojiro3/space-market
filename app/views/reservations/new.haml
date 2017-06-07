@@ -12,10 +12,13 @@
     .reservation__left
       .reservation__left__info.clear-fix
         %p.reservation__left__info__title 選択中のスペース
-        = link_to space_path(@space), class: 'reservation__left__info__body' do
+        = link_to space_path(@space), class: 'reservation__left__info__body', data: {start: "#{@space.start}", finish: "#{@space.finish}"} do
           = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
           %p.reservation__left__info__body__text
-            = @space.body
+            - if @space.body != ''
+              = @space.body
+            - else
+              = @space.name
     .reservation__right
       %h2.reservation__right__title 空き状況の確認／予約リクエスト
       %h3.reservation__right__form__title 料金

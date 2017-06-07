@@ -25,6 +25,6 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:name, :image, :purpose, :text, :hour, :postal_code, :prefecture, :city, :town, :building, :tel, :access, :price, :body, :number).merge(purpose: params[:purpose])
+    params.require(:space).permit(:name, :image, :purpose, :text, :start, :finish, :postal_code, :prefecture, :city, :town, :building, :tel, :access, :price, :body, :number).merge(purpose: params[:purpose])
   end
 end
