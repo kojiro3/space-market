@@ -12,14 +12,19 @@ $(function() {
     $(this).find('.reservation__right__form__date__day__name--day').addClass('white')
     $(this).find('.reservation__right__form__date__day__name--price').addClass('white')
 
-    for (var i = 0; i < 8; i++) {
-      var time = $('.time-' + i);
-      time.addClass('time-select-button--unavailable');
-      time.find('.reservation__right__form__date__time__list').addClass('reservation__right__form__date__time__list--unavailable');
-      time.find('.fa').removeClass('fa-circle-o');
-      time.find('.fa').addClass('fa-times');
-      time.find('.reservation__right__form__date__time__list__right--price').remove();
-      time.find('.reservation__right__form__date__time__list__right').append('<p class="reservation__right__form__date__time__list__right--price reservation__right__form__date__time__list__right--price--unavailable">不可');
+    var start = $('.reservation__left__info__body').data('start')
+    var finish = $('.reservation__left__info__body').data('finish')
+    
+    for (var i = 0; i < 24; i++) {
+      if (i < start || i >= finish) {
+        var time = $('.time-' + i);
+        time.addClass('time-select-button--unavailable');
+        time.find('.reservation__right__form__date__time__list').addClass('reservation__right__form__date__time__list--unavailable');
+        time.find('.fa').removeClass('fa-circle-o');
+        time.find('.fa').addClass('fa-times');
+        time.find('.reservation__right__form__date__time__list__right--price').remove();
+        time.find('.reservation__right__form__date__time__list__right').append('<p class="reservation__right__form__date__time__list__right--price reservation__right__form__date__time__list__right--price--unavailable">不可');
+      }
     }
   })
 
