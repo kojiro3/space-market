@@ -12,7 +12,7 @@
     .reservation__left
       .reservation__left__info.clear-fix
         %p.reservation__left__info__title 選択中のスペース
-        = link_to space_path(@space), class: 'reservation__left__info__body', data: {start: "#{@space.start}", finish: "#{@space.finish}"} do
+        = link_to space_path(@space), class: 'reservation__left__info__body', data: {start: "#{@space.start}", finish: "#{@space.finish}", spaceid: "#{@space.id}", price: "#{@space.price}"} do
           = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
           %p.reservation__left__info__body__text
             - if @space.body != ''
@@ -26,7 +26,7 @@
         %span.reservation__right__price--yen
           = "¥#{@space.price}"
         %span.reservation__right__price--time /時間
-      = form_for [@space, @reservation] do |f|
+      = form_for [@space, @reservation], html: { class: 'js-form' } do |f|
         .reservation__right__form
           %h3.reservation__right__form__title 利用期間
           .reservation__right__form__date
@@ -49,7 +49,7 @@
                   - (d..d.end_of_week(:sunday)).each do|c|
                     - if c.strftime('%d') > today.strftime('%d') && c.strftime('%m') == month
                       %td.reservation__right__form__date__day__name
-                        = link_to '#time-list', class: 'time-list-button' do
+                        = link_to '#time-list', class: 'time-list-button', data: {year: "#{c.strftime('%y')}", month: "#{c.strftime('%m')}", day: "#{c.strftime('%d')}"} do
                           %p.reservation__right__form__date__day__name--day
                             = c.strftime('%d')
                           %p.reservation__right__form__date__day__name--price
@@ -74,35 +74,22 @@
                         = "#{i}:00 - #{i+1}:00"
                       %p.reservation__right__form__date__time__list__right--price
                         = "¥#{@space.price}"
-
-        /   %h3.reservation__right__form__title 日にち
-        /   .reservation__right__form__date
-        /     = f.label :year, class: 'reservation__right__form--label' do
-        /       = select_tag :year, options_for_select([["2017", "2017"]]), class: 'reservation__right__form--select'
-        /       %i.fa.fa-sort-desc
-        /     %span.reservation__right__form--text 年
-        /   .reservation__right__form__date
-        /     = f.label :month, class: 'reservation__right__form--label' do
-        /       = select_tag :month, options_for_select([["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["5", "5"],["6", "6"], ["7", "7"],["8", "8"],["9", "9"],["10", "10"], ["11", "11"],["12", "12"]], {selected: Time.now.month}), class: 'reservation__right__form--select'
-        /       %i.fa.fa-sort-desc
-        /     %span.reservation__right__form--text 月
-        /   .reservation__right__form__date
-        /     = f.label :day, class: 'reservation__right__form--label' do
-        /       = select_tag :day, options_for_select([["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"],["16", "16"],["17", "17"],["18", "18"],["19", "19"],["20", "20"],["21", "21"],["22", "22"],["23", "23"],["24", "24"],["25", "25"],["26", "26"],["27", "27"],["28", "28"],["29", "29"],["30", "30"],["31", "31"]], {selected: Time.now.day}), class: 'reservation__right__form--select'
-        /       %i.fa.fa-sort-desc
-        /     %span.reservation__right__form--text 日
-        / .reservation__right__form.clear-fix
-        /   %h3.reservation__right__form__title 時間
-        /   .reservation__right__form__time
-        /     = f.label :start, class: 'reservation__right__form--label' do
-        /       = select_tag :start, options_for_select([["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["5", "5"],["6", "6"], ["7", "7"],["8", "8"],["9", "9"],["10", "10"], ["11", "11"],["12", "12"],["13", "13"],["14", "14"], ["15", "15"],["16", "16"], ["17", "17"],["18", "18"],["19", "19"],["20", "20"],["21", "21"],["22", "22"],["23", "23"]], {selected: Time.now.hour}), class: 'reservation__right__form--select'
-        /       %i.fa.fa-sort-desc
-        /     %span.reservation__right__form--text 時〜
-        /   .reservation__right__form__time
-        /     = f.label :finish, class: 'reservation__right__form--label' do
-        /       = select_tag :finish, options_for_select([["1", "1"],["2", "2"],["3", "3"],["4", "4"], ["5", "5"],["6", "6"], ["7", "7"],["8", "8"],["9", "9"],["10", "10"], ["11", "11"],["12", "12"],["13", "13"],["14", "14"], ["15", "15"],["16", "16"], ["17", "17"],["18", "18"],["19", "19"],["20", "20"],["21", "21"],["22", "22"],["23", "23"],["24", "24"]], {selected: Time.now.hour + 1}), class: 'reservation__right__form--select'
-        /       %i.fa.fa-sort-desc
-        /     %span.reservation__right__form--text 時
         .reservation__right__form
           .reservation__right__form__submit
             = f.submit '予約リクエストを送信', class: 'reservation__right__form__submit__button'
+      .reservation__right__conf.hidden
+        %h2.reservation__right__title 予約内容確認
+        .reservation__right__confirm
+          .reservation__right__confirm__body.clear-fix
+            %p.reservation__right__confirm__body__title 利用期間
+            %p.reservation__right__confirm__body__text.reservation__right__confirm__body__text--times
+          .reservation__right__confirm__body.clear-fix
+            %p.reservation__right__confirm__body__title 料金
+            .reservation__right__confirm__body__text
+              %p.reservation__right__confirm__body__text--price
+              %p.reservation__right__confirm__body__text--sub
+          .reservation__right__confirm__button.clear-fix
+            = link_to root_path do
+              %p.reservation__right__confirm__button__text.reservation__right__confirm__button__text--top トップページへ
+            = link_to user_path(current_user) do
+              %p.reservation__right__confirm__button__text.reservation__right__confirm__button__text--user マイページへ
