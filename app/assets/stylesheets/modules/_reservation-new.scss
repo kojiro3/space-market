@@ -1,15 +1,21 @@
-.reservation {
+.container {
   background-color: $gray;
-  padding: 30px 0 30px 80px;
+  padding: 0 12px;
   border-top: solid 1px $light-gray;
   color: $dark;
   min-height: 300px;
-  height: calc( 100vh - 165px - 156px );
+  height: calc( 100vh - 165px - 96px );
   overflow-y: scroll;
+}
+.reservation {
+  padding: 30px 12px 30px;
+  margin: 0 auto;
+  width: 94%;
+  max-width: 1110px;
   &__left {
     float: left;
+    width: 33%;
     &__info {
-      width: 345px;
       border: solid 1px $light-gray;
       border-radius: 3px;
       background-color: $white;
@@ -67,6 +73,111 @@
         font-weight: bold;
         margin-bottom: 4px;
       }
+      &__date {
+        background-color: $white;
+        padding: 16px;
+        border: solid 1px $light-gray;
+        margin-bottom: 32px;
+        width: 47.6vw;
+        &__month {
+          font-weight: bold;
+          font-size: 18px;
+          text-align: center;
+          margin: 8px 0 20px;
+        }
+        &__week {
+          background-color: $gray;
+          &__name {
+            width: 6.8vw;
+            text-align: center;
+            border: solid 1px $light-gray;
+          }
+        }
+        &__day {
+          height: 84px;
+          &__name {
+            width: 6.8vw;
+            border: solid 1px $light-gray;
+            position: relative;
+            &--gray {
+              background-color: $gray;
+            }
+            &--day {
+              font-size: 14px;
+              position: absolute;
+              top: 4px;
+              left: 8px;
+              &--gray {
+                color: $dark-gray;
+              }
+            }
+            &--price {
+              font-size: 12px;
+              color: $green;
+              text-align: center;
+              height: 84px;
+              line-height: 84px;
+              &:hover {
+                background-color: $gray;
+              }
+              &--gray {
+                color: $dark-gray;
+              }
+            }
+          }
+        }
+        &__time {
+          margin-top: 12px;
+          border: solid 1px $light-gray;
+          border-left: hidden;
+          border-bottom: hidden;
+          &__list {
+            border-left: solid 1px $light-gray;
+            border-bottom: solid 1px $light-gray;
+            width: calc( 11.77vw - 16px );
+            float: left;
+            font-size: 14px;
+            padding: 8px;
+            &--unavailable {
+              background-color: $gray;
+              color: $dark-gray;
+            }
+            &--circle {
+              float: left;
+              color: $green;
+              font-weight: bold;
+              font-size: 22px;
+              line-height: 42px;
+              .fa-times {
+                color: $dark-gray;
+              }
+              .fa-check {
+                color: $white;
+              }
+            }
+            &__right {
+              float: right;
+              &--time {
+                font-weight: bold;
+                text-align: right;
+              }
+              &--price {
+                font-weight: bold;
+                text-align: right;
+                color: $green;
+                &--unavailable {
+                  color: $dark-gray;
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+
+
+
       &__date {
         float: left;
       }
@@ -172,4 +283,24 @@
       }
     }
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.dark {
+  background-color: $dark;
+}
+
+.white {
+  color: $white;
+}
+
+.green {
+  background-color: $green;
+}
+
+.time-select-button--unavailable {
+  pointer-events: none;
 }

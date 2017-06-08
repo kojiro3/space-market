@@ -73,7 +73,12 @@
         %span.space-form__right__title__term.space-form__right__title__term--free 任意
         %span.space-form__right__title__text 営業時間について
       .space-form__right__field
-        = f.text_area :hour, class: 'space-form__right__field__hour', placeholder: '平日 9:00-21:00 土日 10:00-20:00'
+        %span
+          = f.text_field :start, class: 'space-form__right__field__time', placeholder: '9'
+        %span :00〜
+        %span
+          = f.text_field :finish, class: 'space-form__right__field__time', placeholder: '18'
+        %span :00
       .space-form__right__title
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 料金

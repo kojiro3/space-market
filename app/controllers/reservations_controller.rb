@@ -9,7 +9,10 @@ class ReservationsController < ApplicationController
     @reservation = current_user.reservations.new(reservation_params)
     @space = Space.find(params[:space_id])
     if @reservation.save
-      redirect_to space_reservation_path(@space, @reservation), notice: 'スペースを予約しました'
+      respond_to do |format|
+        format.html { redirect_to space_reservation_path(@space, @reservation), notice: 'スペースを予約しました' }
+        format.json { render json: @reservation }
+      end
     else
       flash.now[:alert] = 'スペースの予約に失敗しました'
       render :new
@@ -30,6 +33,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.permit(:year, :month, :day, :start, :finish).merge(space_id: params[:space_id])
+    params.permit(:year, :month, :day, :start, :finish, :price, times: []).merge(space_id: params[:space_id])
   end
 end
