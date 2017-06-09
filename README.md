@@ -11,7 +11,7 @@
 
 * has_many :reservations
 
-## owner table
+## owners table
 
 |  Column   |  Type   |              Option                    |
 |:----------|:-------:|:---------------------------------------|
@@ -22,7 +22,7 @@
 
 * has_many :spaces
 
-## space table
+## spaces table
 
 |  Column   |  Type      |              Option                    |
 |:----------|:----------:|:---------------------------------------|
@@ -49,7 +49,7 @@
 
 * has_many :reservations
 
-## reservation table
+## reservations table
 
 |  Column   |  Type      |              Option                    |
 |:----------|:----------:|:---------------------------------------|
@@ -64,3 +64,36 @@
 * belongs_to :user
 
 * belongs_to :space
+
+## events table
+
+|  Column   |  Type      |              Option                    |
+|:----------|:----------:|:---------------------------------------|
+| name      | string     | null: false                            |
+| body      | integer    |                                        |
+| target    | references | foreign_key: true                      |
+| space_id  | references | foreign_key: true                      |
+| reservation_id | references | foreign_key: true                      |
+
+### Association
+
+* belongs_to :space
+
+* belongs_to :reservation
+
+* has_many :users, through: event_users
+
+* has_many :event_users
+
+## event_users table
+
+|  Column   |  Type      |              Option                    |
+|:----------|:----------:|:---------------------------------------|
+| event_id  | references | foreign_key: true                      |
+| user_id   | references | foreign_key: true                      |
+
+### Association
+
+* belongs_to :event
+
+* belongs_to :user
