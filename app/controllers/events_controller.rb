@@ -7,7 +7,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    binding.pry
     @event = Event.new(reservation_params)
     if @event.save
       redirect_to root_path, notice: 'スペースを投稿しました'

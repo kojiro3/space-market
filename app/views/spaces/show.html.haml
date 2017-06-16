@@ -112,9 +112,17 @@
     .space__info__detail#event-buttom
       .space__info__detail__wrapper
         .space__info__detail__wrapper__event
-          .space__info__detail__wrapper__event--image
           %h2.space__info__detail__wrapper__event--text 開催予定のイベント
           - @events.each do |event|
-            %p.space__info__detail__wrapper__event--list
-              = link_to '' do
-                = event.name
+            - if event.reservation.year.to_i >= Date.today.strftime('%y').to_i && event.reservation.month.to_i >= Date.today.strftime('%m').to_i && event.reservation.day.to_i >= Date.today.strftime('%d').to_i
+              .space__info__detail__wrapper__event__list
+                .space__info__detail__wrapper__event__list--image
+                  = image_tag "#{event.users.first.image}", class: 'space__info__detail__wrapper__side__owner__image'
+                .space__info__detail__wrapper__event__list__body
+                  %span.space__info__detail__wrapper__event__list__body--host
+                    = event.users.first.name
+                  %span.space__info__detail__wrapper__event__list__body--time.clear
+                    = "20#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
+                  %p.space__info__detail__wrapper__event__list__body--name
+                    = link_to '' do
+                      = event.name
