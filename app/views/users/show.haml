@@ -15,16 +15,32 @@
         = @user.name
       = link_to edit_user_registration_path do
         %p.my-page__body__left__edit プロフィールを編集
-    .my-page__body__right
-      .my-page__body__right__title
-        予約一覧
-      .my-page__body__right__text
-        - if @reservations.last
-          - @reservations.each do |reservation|
-            = link_to space_reservation_path(reservation.space.id, reservation.id) do
-              %p.my-page__body__right__text--name
-                = reservation.space.name
-              %p.my-page__body__right__text--date
-                = "#{reservation.year}/#{reservation.month}/#{reservation.day} #{reservation.start}:00〜#{reservation.finish}:00"
-        - else
-          %p.my-page__body__right__text--none 予約はありません。
+    .my-page__body__right.clear-fix
+      .my-page__body__right--float
+        .my-page__body__right__title
+          予約一覧
+        .my-page__body__right__text
+          - if @reservations.last
+            - @reservations.each do |reservation|
+              - if reservation.year.to_i >= Date.today.strftime('%y').to_i && reservation.month.to_i >= Date.today.strftime('%m').to_i && reservation.day.to_i >= Date.today.strftime('%d').to_i
+                = link_to space_reservation_path(reservation.space.id, reservation.id) do
+                  %p.my-page__body__right__text--name
+                    = reservation.space.name
+                  %p.my-page__body__right__text--date
+                    = "#{reservation.year}/#{reservation.month}/#{reservation.day} #{reservation.start}:00〜#{reservation.finish}:00"
+          - else
+            %p.my-page__body__right__text--none 予約はありません。
+      .my-page__body__right--float
+        .my-page__body__right__title
+          イベント一覧
+        .my-page__body__right__text
+          - if @events.last
+            - @events.each do |event|
+              - if event.reservation.year.to_i >= Date.today.strftime('%y').to_i && event.reservation.month.to_i >= Date.today.strftime('%m').to_i && event.reservation.day.to_i >= Date.today.strftime('%d').to_i
+                = link_to '' do
+                  %p.my-page__body__right__text--name
+                    = event.name
+                  %p.my-page__body__right__text--date
+                    = "#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
+          - else
+            %p.my-page__body__right__text--none イベントはありません。
