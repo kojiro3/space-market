@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(reservation_params)
+    @event = Event.new(event_params)
     if @event.save
       redirect_to root_path, notice: 'スペースを投稿しました'
     else
@@ -22,9 +22,23 @@ class EventsController < ApplicationController
     @reservation = @event.reservation
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @event.users << current_user
+    @event.save
+    redirect_to root_path, notice: 'イベント参加が完了しました'
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.users.delete(current_user)
+    @event.save
+    redirect_to root_path, notice: 'イベントのキャンセルが完了しました'
+  end
+
   private
 
-  def reservation_params
+  def event_params
     params.require(:event).permit(:name, :body, :target, user_ids: []).merge(space_id: params[:space_id], reservation_id: params[:reservation_id])
   end
 end
