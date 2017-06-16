@@ -36,6 +36,9 @@
     }
     &__title {
       border-bottom: 1px solid #eaeaea;
+      &--event {
+        border-top: 1px solid #eaeaea;
+      }
       &__wrapper {
         width: 94%;
         max-width: 1110px;
@@ -43,6 +46,7 @@
         &__main {
           padding: 24px 0;
           width: 100%;
+          position: relative;
           &__name {
             font-size: 20px;
           }
@@ -83,12 +87,19 @@
               font-weight: bold;
               float: left;
             }
+            &--sub {
+              margin-left: 32px;
+            }
           }
         }
         &__event {
           padding: 20px 0;
           &--text {
             font-weight: bold;
+          }
+          &--none {
+            font-size: 14px;
+            padding: 8px 0 0 12px;
           }
           &__list {
             padding: 16px 0 12px;
@@ -115,6 +126,9 @@
           position: absolute;
           top: 20px;
           right: 0;
+          &--event {
+            top: -4px;
+          }
           &__request {
             padding-top: 16px;
             background-color: $white;

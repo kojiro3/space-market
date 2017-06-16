@@ -7,4 +7,95 @@
       = link_to root_path do
         = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
 
-= @event.name
+.space
+  .space__info
+    .space__info__title.space__info__title--event
+      .space__info__title__wrapper
+        .space__info__title__wrapper__main
+          %h1.space__info__title__wrapper__main__name#title-buttom
+            = @event.name
+          %ul.clear-fix
+            %li.space__info__title__wrapper__main__list
+              %i.fa.fa-building
+              %span.space__info__title__wrapper__main__list__text
+                = @space.name
+            %li.space__info__title__wrapper__main__list
+              %i.fa.fa-user
+              %span.space__info__title__wrapper__main__list__text
+                = "〜#{@space.number}人"
+            %li.space__info__title__wrapper__main__list
+              %i.fa.fa-map-marker
+              %span.space__info__title__wrapper__main__list__text
+                = "#{@space.prefecture}#{@space.city}"
+            %li.space__info__title__wrapper__main__list
+              %i.fa.fa-folder
+              %span.space__info__title__wrapper__main__list__text
+                = @space.purpose
+          .space__info__detail__wrapper__side.space__info__detail__wrapper__side--event
+            = link_to space_path(@space), class: 'reservation__left__info__body', data: {start: "#{@space.start}", finish: "#{@space.finish}", spaceid: "#{@space.id}", price: "#{@space.price}"} do
+              = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
+              %p.reservation__left__info__body__text
+                - if @space.body != ''
+                  = @space.body
+                - else
+                  = @space.name
+    .space__info__detail
+      .space__info__detail__wrapper
+        .space__info__detail__wrapper__body.clear-fix
+          .space__info__detail__wrapper__body__about
+            %h2 イベント内容
+          .space__info__detail__wrapper__body__text
+            %p
+              = simple_format(@event.body)
+        .space__info__detail__wrapper__body.clear-fix
+          .space__info__detail__wrapper__body__about
+            %h2 参加対象
+          .space__info__detail__wrapper__body__text
+            %p
+              = simple_format(@event.target)
+        .space__info__detail__wrapper__body.clear-fix
+          .space__info__detail__wrapper__body__about
+            %h2 開催日時
+          .space__info__detail__wrapper__body__text
+            %p
+              = "20#{@reservation.year}/#{@reservation.month}/#{@reservation.day} #{@reservation.start}:00〜#{@reservation.finish}:00"
+        .space__info__detail__wrapper__body.clear-fix
+          .space__info__detail__wrapper__body__about#price-buttom
+            %h2 参加人数
+          .space__info__detail__wrapper__body__text
+            %p.space__info__detail__wrapper__body__text--bold
+              = "#{@event.users.length}人"
+        .space__info__detail__wrapper__body.clear-fix
+          .space__info__detail__wrapper__body__about#price-buttom
+            %h2 参加費
+          .space__info__detail__wrapper__body__text
+            %p.space__info__detail__wrapper__body__text--bold
+              = "¥#{@reservation.price / @event.users.length}/人"
+            %span.space__info__detail__wrapper__body__text--sub
+              ※参加人数によって変動します
+        .space__info__detail__wrapper__side
+          .space__info__detail__wrapper__side__request
+            %span.space__info__detail__wrapper__side__request__price--bold
+              = "¥#{@reservation.price / @event.users.length}"
+            %span.space__info__detail__wrapper__side__request__price /人
+            - if user_signed_in?
+              = link_to new_space_reservation_path(@space) do
+                %p.space__info__detail__wrapper__side__request__button イベントに参加する
+            - else
+              = link_to new_user_session_path do
+                %p.space__info__detail__wrapper__side__request__button 予約リクエスト
+          .space__info__detail__wrapper__side__owner
+            = image_tag "#{@event.users.first.image}", class: 'space__info__detail__wrapper__side__owner__image', alt: 'owner-image'
+            %p.space__info__detail__wrapper__side__owner__intro このイベントの企画者
+            %p.space__info__detail__wrapper__side__owner__name
+              = @event.users.first.name
+    .space__info__access
+      .space__info__access__wrapper
+        .space__info__access__wrapper__body.clear-fix#access-buttom
+          %p.space__info__access__wrapper__body__name 住所
+          %p.space__info__access__wrapper__body__text
+            = "#{@space.prefecture}#{@space.city}#{@space.town}#{@space.building}"
+        .space__info__access__wrapper__body.clear-fix
+          %p.space__info__access__wrapper__body__name アクセス
+          %p.space__info__access__wrapper__body__text
+            = @space.access

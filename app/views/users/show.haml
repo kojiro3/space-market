@@ -27,7 +27,7 @@
                   %p.my-page__body__right__text--name
                     = reservation.space.name
                   %p.my-page__body__right__text--date
-                    = "#{reservation.year}/#{reservation.month}/#{reservation.day} #{reservation.start}:00〜#{reservation.finish}:00"
+                    = "20#{reservation.year}/#{reservation.month}/#{reservation.day} #{reservation.start}:00〜#{reservation.finish}:00"
           - else
             %p.my-page__body__right__text--none 予約はありません。
       .my-page__body__right--float
@@ -41,6 +41,6 @@
                   %p.my-page__body__right__text--name
                     = event.name
                   %p.my-page__body__right__text--date
-                    = "#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
+                    = "20#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
           - else
             %p.my-page__body__right__text--none イベントはありません。

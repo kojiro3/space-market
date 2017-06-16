@@ -23,9 +23,6 @@
             = link_to '#title-buttom' do
               概要
           %li.space__info__nav__main__list
-            = link_to '#price-buttom' do
-              価格
-          %li.space__info__nav__main__list
             = link_to '#access-buttom' do
               アクセス
           %li.space__info__nav__main__list
@@ -113,16 +110,19 @@
       .space__info__detail__wrapper
         .space__info__detail__wrapper__event
           %h2.space__info__detail__wrapper__event--text 開催予定のイベント
-          - @events.each do |event|
-            - if event.reservation.year.to_i >= Date.today.strftime('%y').to_i && event.reservation.month.to_i >= Date.today.strftime('%m').to_i && event.reservation.day.to_i >= Date.today.strftime('%d').to_i
-              .space__info__detail__wrapper__event__list
-                .space__info__detail__wrapper__event__list--image
-                  = image_tag "#{event.users.first.image}", class: 'space__info__detail__wrapper__side__owner__image'
-                .space__info__detail__wrapper__event__list__body
-                  %span.space__info__detail__wrapper__event__list__body--host
-                    = event.users.first.name
-                  %span.space__info__detail__wrapper__event__list__body--time.clear
-                    = "20#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
-                  %p.space__info__detail__wrapper__event__list__body--name
-                    = link_to space_reservation_event_path(@space, event.reservation, event) do
-                      = event.name
+          - if @events.last
+            - @events.each do |event|
+              - if event.reservation.year.to_i >= Date.today.strftime('%y').to_i && event.reservation.month.to_i >= Date.today.strftime('%m').to_i && event.reservation.day.to_i >= Date.today.strftime('%d').to_i
+                .space__info__detail__wrapper__event__list
+                  .space__info__detail__wrapper__event__list--image
+                    = image_tag "#{event.users.first.image}", class: 'space__info__detail__wrapper__side__owner__image'
+                  .space__info__detail__wrapper__event__list__body
+                    %span.space__info__detail__wrapper__event__list__body--host
+                      = event.users.first.name
+                    %span.space__info__detail__wrapper__event__list__body--time.clear
+                      = "20#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
+                    %p.space__info__detail__wrapper__event__list__body--name
+                      = link_to space_reservation_event_path(@space, event.reservation, event) do
+                        = event.name
+          - else
+            %p.space__info__detail__wrapper__event--none イベントはありません

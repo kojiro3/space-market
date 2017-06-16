@@ -18,6 +18,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @space = @event.space
+    @reservation = @event.reservation
   end
 
   private
