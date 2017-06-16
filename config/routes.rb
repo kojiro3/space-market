@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :owners, only: [:show]
   resources :spaces, only: [:index, :new, :create, :show] do
-    resources :reservations, only: [:new, :create, :show, :destroy]
+    resources :reservations, only: [:new, :create, :show, :destroy] do
+      resources :events, only: [:new, :create, :show]
+    end
   end
 end

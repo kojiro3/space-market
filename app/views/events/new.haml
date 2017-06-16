@@ -1,0 +1,44 @@
+.header
+  =render 'spaces/header-top'
+  .header__nav.clear-fix
+    %ul.row
+      =render 'spaces/header-nav'
+    .header__nav__logo
+      = link_to root_path do
+        = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
+
+.container
+  .reservation.clear-fix
+    .reservation__left
+      .reservation__left__info.clear-fix
+        %p.reservation__left__info__title 予約したスペース
+        = link_to space_path(@space), class: 'reservation__left__info__body' do
+          = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
+          %p.reservation__left__info__body__text
+            = @space.body
+    .reservation__right
+      %h2.reservation__right__title イベント作成
+      .reservation__right__form
+        = form_for [@space, @reservation, @event] do |f|
+          .space-form__right__title
+            %span.space-form__right__title__term 必須
+            %span.space-form__right__title__text イベント名
+            %span.space-form__right__title__plus 50文字以内。イベント名を入力してください。
+          .space-form__right__field
+            = f.text_field :name, class: 'space-form__right__field__name w500', placeholder: 'サッカー日本代表を応援する会'
+          .space-form__right__title
+            %span.space-form__right__title__term 必須
+            %span.space-form__right__title__text イベントについて
+            %span.space-form__right__title__plus 10文字以上800文字以内。
+          .space-form__right__field
+            = f.text_area :body, class: 'space-form__right__field__access', placeholder: 'W杯予選イラクvs日本を大型TVで観戦します。立食・お酒も飲めます。絶対に負けられない戦いがここにもある！'
+          .space-form__right__title
+            %span.space-form__right__title__term 必須
+            %span.space-form__right__title__text イベントの対象者
+            %span.space-form__right__title__plus ；イベントの参加対象者の条件を入力してください。
+          .space-form__right__field
+            = f.text_area :target, class: 'space-form__right__field__access', placeholder: '年齢制限なし。男性・女性。サッカー好きの方。みんなでワイワイ応援したい方'
+          = hidden_field_tag 'event[user_ids][]', current_user.id
+          .space-form__right__field
+            .space-form__right__field__submit
+              = f.submit '送信', class: 'space-form__right__field__submit__button'

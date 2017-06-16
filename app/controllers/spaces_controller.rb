@@ -20,6 +20,7 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find(params[:id])
+    @events = @space.events
   end
 
   private

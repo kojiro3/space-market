@@ -82,6 +82,11 @@
     }
     &__right {
       float: left;
+      &--float {
+        float: left;
+        margin-right: 60px;
+        max-width: 400px;
+      }
       &__title {
         font-size: 20px;
         margin-top: 20px;

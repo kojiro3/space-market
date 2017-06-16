@@ -1,5 +1,5 @@
 .header
-  =render 'header-top'
+  =render 'spaces/header-top'
   .header__nav.clear-fix
     %ul.row
       =render 'spaces/header-nav'
@@ -8,34 +8,12 @@
         = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
 
 .space
-  %P.space__intro
-    - if @space.body != ''
-      = @space.body
-    - else
-      = @space.name
-  .space__image
-    = image_tag "#{@space.image}", class: 'space__image__this', alt: 'main-image'
   .space__info
-    .space__info__nav
-      .space__info__nav__main
-        %ul.clear-fix
-          %li.space__info__nav__main__list
-            = link_to '#title-buttom' do
-              概要
-          %li.space__info__nav__main__list
-            = link_to '#access-buttom' do
-              アクセス
-          %li.space__info__nav__main__list
-            = link_to '#event-buttom' do
-              イベント
-    .space__info__title
+    .space__info__title.space__info__title--event
       .space__info__title__wrapper
         .space__info__title__wrapper__main
           %h1.space__info__title__wrapper__main__name#title-buttom
-            - if @space.body != ''
-              = @space.body
-            - else
-              = @space.name
+            = @event.name
           %ul.clear-fix
             %li.space__info__title__wrapper__main__list
               %i.fa.fa-building
@@ -53,48 +31,64 @@
               %i.fa.fa-folder
               %span.space__info__title__wrapper__main__list__text
                 = @space.purpose
+          .space__info__detail__wrapper__side.space__info__detail__wrapper__side--event
+            = link_to space_path(@space), class: 'reservation__left__info__body', data: {start: "#{@space.start}", finish: "#{@space.finish}", spaceid: "#{@space.id}", price: "#{@space.price}"} do
+              = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
+              %p.reservation__left__info__body__text
+                - if @space.body != ''
+                  = @space.body
+                - else
+                  = @space.name
     .space__info__detail
       .space__info__detail__wrapper
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
-            %h2 会場について
+            %h2 イベント内容
           .space__info__detail__wrapper__body__text
             %p
-              = simple_format(@space.text)
+              = simple_format(@event.body)
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
-            %h2 収容人数
+            %h2 参加対象
           .space__info__detail__wrapper__body__text
             %p
-              = "〜#{@space.number}人"
+              = simple_format(@event.target)
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about
-            %h2 営業時間
+            %h2 開催日時
           .space__info__detail__wrapper__body__text
             %p
-              = "#{@space.start}:00〜#{@space.finish}:00"
+              = "20#{@reservation.year}/#{@reservation.month}/#{@reservation.day} #{@reservation.start}:00〜#{@reservation.finish}:00"
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about#price-buttom
-            %h2 価格
+            %h2 参加人数
           .space__info__detail__wrapper__body__text
             %p.space__info__detail__wrapper__body__text--bold
-              = "¥#{@space.price}/時間"
+              = "#{@event.users.length}人"
+        .space__info__detail__wrapper__body.clear-fix
+          .space__info__detail__wrapper__body__about#price-buttom
+            %h2 参加費
+          .space__info__detail__wrapper__body__text
+            %p.space__info__detail__wrapper__body__text--bold
+              = "¥#{@reservation.price / @event.users.length}/人"
+            %span.space__info__detail__wrapper__body__text--sub
+              ※参加人数によって変動します
         .space__info__detail__wrapper__side
           .space__info__detail__wrapper__side__request
             %span.space__info__detail__wrapper__side__request__price--bold
-              = "¥#{@space.price}"
-            %span.space__info__detail__wrapper__side__request__price /時間
+              = "¥#{@reservation.price / @event.users.length}"
+            %span.space__info__detail__wrapper__side__request__price /人
             - if user_signed_in?
               = link_to new_space_reservation_path(@space) do
-                %p.space__info__detail__wrapper__side__request__button 予約リクエスト
+                %p.space__info__detail__wrapper__side__request__button イベントに参加する
             - else
               = link_to new_user_session_path do
                 %p.space__info__detail__wrapper__side__request__button 予約リクエスト
           .space__info__detail__wrapper__side__owner
-            = image_tag "#{@space.owner.image}", class: 'space__info__detail__wrapper__side__owner__image', alt: 'owner-image'
-            %p.space__info__detail__wrapper__side__owner__intro このスペースの管理者
+            = image_tag "#{@event.users.first.image}", class: 'space__info__detail__wrapper__side__owner__image', alt: 'owner-image'
+            %p.space__info__detail__wrapper__side__owner__intro このイベントの企画者
             %p.space__info__detail__wrapper__side__owner__name
-              = @space.owner.name
+              = @event.users.first.name
     .space__info__access
       .space__info__access__wrapper
         .space__info__access__wrapper__body.clear-fix#access-buttom
@@ -105,24 +99,3 @@
           %p.space__info__access__wrapper__body__name アクセス
           %p.space__info__access__wrapper__body__text
             = @space.access
-
-    .space__info__detail#event-buttom
-      .space__info__detail__wrapper
-        .space__info__detail__wrapper__event
-          %h2.space__info__detail__wrapper__event--text 開催予定のイベント
-          - if @events.last
-            - @events.each do |event|
-              - if event.reservation.year.to_i >= Date.today.strftime('%y').to_i && event.reservation.month.to_i >= Date.today.strftime('%m').to_i && event.reservation.day.to_i >= Date.today.strftime('%d').to_i
-                .space__info__detail__wrapper__event__list
-                  .space__info__detail__wrapper__event__list--image
-                    = image_tag "#{event.users.first.image}", class: 'space__info__detail__wrapper__side__owner__image'
-                  .space__info__detail__wrapper__event__list__body
-                    %span.space__info__detail__wrapper__event__list__body--host
-                      = event.users.first.name
-                    %span.space__info__detail__wrapper__event__list__body--time.clear
-                      = "20#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
-                    %p.space__info__detail__wrapper__event__list__body--name
-                      = link_to space_reservation_event_path(@space, event.reservation, event) do
-                        = event.name
-          - else
-            %p.space__info__detail__wrapper__event--none イベントはありません

@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608005349) do
+ActiveRecord::Schema.define(version: 20170609062917) do
+
+  create_table "event_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_users_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_event_users_on_user_id", using: :btree
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                         null: false
+    t.text     "body",           limit: 65535, null: false
+    t.text     "target",         limit: 65535, null: false
+    t.integer  "space_id"
+    t.integer  "reservation_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["reservation_id"], name: "index_events_on_reservation_id", using: :btree
+    t.index ["space_id"], name: "index_events_on_space_id", using: :btree
+  end
 
   create_table "owners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -90,6 +111,10 @@ ActiveRecord::Schema.define(version: 20170608005349) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "event_users", "events"
+  add_foreign_key "event_users", "users"
+  add_foreign_key "events", "reservations"
+  add_foreign_key "events", "spaces"
   add_foreign_key "reservations", "spaces"
   add_foreign_key "reservations", "users"
   add_foreign_key "spaces", "owners"

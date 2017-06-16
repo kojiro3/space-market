@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reservations
+  has_many :event_users
+  has_many :events, through: :event_users
 
   mount_uploader :image, ImageUploader
 end
