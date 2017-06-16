@@ -28,6 +28,9 @@
           %li.space__info__nav__main__list
             = link_to '#access-buttom' do
               アクセス
+          %li.space__info__nav__main__list
+            = link_to '#event-buttom' do
+              イベント
     .space__info__title
       .space__info__title__wrapper
         .space__info__title__wrapper__main
@@ -105,3 +108,13 @@
           %p.space__info__access__wrapper__body__name アクセス
           %p.space__info__access__wrapper__body__text
             = @space.access
+
+    .space__info__detail#event-buttom
+      .space__info__detail__wrapper
+        .space__info__detail__wrapper__event
+          .space__info__detail__wrapper__event--image
+          %h2.space__info__detail__wrapper__event--text 開催予定のイベント
+          - @events.each do |event|
+            %p.space__info__detail__wrapper__event--list
+              = link_to '' do
+                = event.name

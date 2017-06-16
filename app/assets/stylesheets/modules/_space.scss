@@ -85,6 +85,15 @@
             }
           }
         }
+        &__event {
+          padding: 20px 0;
+          &--text {
+            font-weight: bold;
+          }
+          &--list {
+            padding: 12px 0 0 12px;
+          }
+        }
         &__side {
           width: 345px;
           position: absolute;
