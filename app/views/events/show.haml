@@ -1,0 +1,10 @@
+.header
+  =render 'spaces/header-top'
+  .header__nav.clear-fix
+    %ul.row
+      =render 'spaces/header-nav'
+    .header__nav__logo
+      = link_to root_path do
+        = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
+
+= @event.name

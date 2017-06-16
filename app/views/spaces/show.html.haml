@@ -124,5 +124,5 @@
                   %span.space__info__detail__wrapper__event__list__body--time.clear
                     = "20#{event.reservation.year}/#{event.reservation.month}/#{event.reservation.day} #{event.reservation.start}:00〜#{event.reservation.finish}:00"
                   %p.space__info__detail__wrapper__event__list__body--name
-                    = link_to '' do
+                    = link_to space_reservation_event_path(@space, event.reservation, event) do
                       = event.name
