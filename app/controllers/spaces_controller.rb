@@ -1,7 +1,7 @@
 class SpacesController < ApplicationController
 
   def index
-    @spaces = Space.order("created_at DESC")
+    @spaces = Space.order("created_at DESC").limit(3)
   end
 
   def new
@@ -21,6 +21,10 @@ class SpacesController < ApplicationController
   def show
     @space = Space.find(params[:id])
     @events = @space.events
+  end
+
+  def search
+    @spaces = Space.where(purpose: params[:purpose]).order("created_at DESC")
   end
 
   private
