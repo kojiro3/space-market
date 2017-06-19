@@ -25,15 +25,23 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.users << current_user
-    @event.save
-    redirect_to root_path, notice: 'イベント参加が完了しました'
+    if @event.save
+      redirect_to root_path, notice: 'イベント参加が完了しました'
+    else
+      flash.now[:alert] = 'イベント参加に失敗しました'
+      render :show
+    end
   end
 
   def destroy
     @event = Event.find(params[:id])
     @event.users.delete(current_user)
-    @event.save
-    redirect_to root_path, notice: 'イベントのキャンセルが完了しました'
+    if @event.save
+      redirect_to root_path, notice: 'イベントのキャンセルが完了しました'
+    else
+      flash.now[:alert] = 'イベントのキャンセルに失敗しました'
+      render :show
+    end
   end
 
   private

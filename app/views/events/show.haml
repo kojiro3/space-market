@@ -1,3 +1,4 @@
+= javascript_include_tag "space"
 .header
   =render 'spaces/header-top'
   .header__nav.clear-fix
@@ -62,9 +63,12 @@
         .space__info__detail__wrapper__body.clear-fix
           .space__info__detail__wrapper__body__about#price-buttom
             %h2 参加人数
-          .space__info__detail__wrapper__body__text.bottom
+          .space__info__detail__wrapper__body__text.space__info__detail__wrapper__body__text--button
             %p.space__info__detail__wrapper__body__text--bold
               = "#{@event.users.length}人"
+            = link_to '#user-list', class: 'user-list-button' do
+              参加者一覧
+              %i.fa.fa-sort-desc
           - @event.users.each do |user|
             .space__info__detail__wrapper__body--user.clear-fix.hidden
               = image_tag "#{user.image}", class: 'space__info__detail__wrapper__side__owner__image', alt: 'user-image'
