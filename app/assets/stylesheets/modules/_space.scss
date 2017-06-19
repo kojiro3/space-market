@@ -91,6 +91,9 @@
               margin-left: 32px;
             }
           }
+          &--user {
+            margin: 16px 0 0 100px;
+          }
         }
         &__event {
           padding: 20px 0;
@@ -192,5 +195,23 @@
         }
       }
     }
+  }
+}
+
+.button {
+  margin-bottom: 16px;
+}
+
+.user-list-button {
+  color: $blue;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  .fa {
+    position: absolute;
+    top: -4px;
+    right: -14px;
+    font-size: 16px;
   }
 }

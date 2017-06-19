@@ -37,7 +37,7 @@
           - if @events.last
             - @events.each do |event|
               - if event.reservation.year.to_i >= Date.today.strftime('%y').to_i && event.reservation.month.to_i >= Date.today.strftime('%m').to_i && event.reservation.day.to_i >= Date.today.strftime('%d').to_i
-                = link_to '' do
+                = link_to space_reservation_event_path(event.space, event.reservation, event) do
                   %p.my-page__body__right__text--name
                     = event.name
                   %p.my-page__body__right__text--date

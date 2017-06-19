@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :owners, only: [:show]
   resources :spaces, only: [:index, :new, :create, :show] do
     resources :reservations, only: [:new, :create, :show, :destroy] do
-      resources :events, only: [:new, :create, :show]
+      resources :events, only: [:new, :create, :show, :update, :destroy]
     end
   end
 end
