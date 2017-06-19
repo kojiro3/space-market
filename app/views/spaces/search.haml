@@ -1,0 +1,16 @@
+.header
+  =render 'header-top'
+  .header__nav.clear-fix
+    %ul.row
+      =render 'spaces/header-nav'
+    .header__nav__logo
+      = link_to root_path do
+        = image_tag '//cdn.spacemarket.net/assets/service/logo-1ca6e86ca1d6dca0e0cffec09d775936.svg'
+
+.cont__space.cont__space--top
+  .cont__space__unit
+    %h2.cont__space__unit__title#party
+      = @spaces.first.purpose
+    %ul.row.clear-fix
+      - @spaces.each do |space|
+        = render space
