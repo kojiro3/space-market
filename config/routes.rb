@@ -16,5 +16,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create, :show, :destroy] do
       resources :events, only: [:new, :create, :show, :update, :destroy]
     end
+    collection do
+      get 'search'
+    end
   end
 end

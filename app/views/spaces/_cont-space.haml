@@ -1,12 +1,14 @@
 .cont__space.cont__space--gray
   .cont__space__unit
     %h2.cont__space__unit__title#party パーティー
-    - @spaces.party.each do |space|
-      = render space
+    %ul.row.clear-fix
+      - @spaces.party.each do |space|
+        = render space
     .cont__space__unit__more
       - if @spaces.party.last
-        = link_to root_path, class: 'cont__space__unit__more--button' do
-          %span.cont__space__unit__more__text パーティーで利用できるスペースをもっと見る
+        = form_tag search_spaces_path, class: 'cont__space__unit__more--button', method: 'get' do
+          = hidden_field_tag 'purpose', 'パーティー'
+          = submit_tag 'パーティーで利用できるスペースをもっと見る', class: 'cont__space__unit__more__text', name: nil
           %i.fa.fa-angle-right.fa-lg
       - else
         %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
@@ -14,12 +16,14 @@
 .cont__space
   .cont__space__unit
     %h2.cont__space__unit__title#meeting 会議
-    - @spaces.meeting.each do |space|
-      = render space
+    %ul.row.clear-fix
+      - @spaces.meeting.each do |space|
+        = render space
     .cont__space__unit__more
       - if @spaces.meeting.last
-        = link_to root_path, class: 'cont__space__unit__more--button' do
-          %span.cont__space__unit__more__text 会議で利用できるスペースをもっと見る
+        = form_tag search_spaces_path, class: 'cont__space__unit__more--button', method: 'get' do
+          = hidden_field_tag 'purpose', '会議'
+          = submit_tag '会議で利用できるスペースをもっと見る', class: 'cont__space__unit__more__text', name: nil
           %i.fa.fa-angle-right.fa-lg
       - else
         %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
@@ -27,12 +31,14 @@
 .cont__space.cont__space--gray
   .cont__space__unit
     %h2.cont__space__unit__title#photo 写真撮影
-    - @spaces.photo.each do |space|
-      = render space
+    %ul.row.clear-fix
+      - @spaces.photo.each do |space|
+        = render space
     .cont__space__unit__more
       - if @spaces.photo.last
-        = link_to root_path, class: 'cont__space__unit__more--button' do
-          %span.cont__space__unit__more__text 写真撮影で利用できるスペースをもっと見る
+        = form_tag search_spaces_path, class: 'cont__space__unit__more--button', method: 'get' do
+          = hidden_field_tag 'purpose', '写真撮影'
+          = submit_tag '写真撮影で利用できるスペースをもっと見る', class: 'cont__space__unit__more__text', name: nil
           %i.fa.fa-angle-right.fa-lg
       - else
         %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
@@ -40,12 +46,14 @@
 .cont__space
   .cont__space__unit
     %h2.cont__space__unit__title#location ロケ撮影
-    - @spaces.location.each do |space|
-      = render space
+    %ul.row.clear-fix
+      - @spaces.location.each do |space|
+        = render space
     .cont__space__unit__more
       - if @spaces.location.last
-        = link_to root_path, class: 'cont__space__unit__more--button' do
-          %span.cont__space__unit__more__text ロケ撮影で利用できるスペースをもっと見る
+        = form_tag search_spaces_path, class: 'cont__space__unit__more--button', method: 'get' do
+          = hidden_field_tag 'purpose', 'ロケ撮影'
+          = submit_tag 'ロケ撮影で利用できるスペースをもっと見る', class: 'cont__space__unit__more__text', name: nil
           %i.fa.fa-angle-right.fa-lg
       - else
         %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
@@ -53,12 +61,14 @@
 .cont__space.cont__space--gray
   .cont__space__unit
     %h2.cont__space__unit__title#event イベント
-    - @spaces.event.each do |space|
-      = render space
+    %ul.row.clear-fix
+      - @spaces.event.each do |space|
+        = render space
     .cont__space__unit__more
       - if @spaces.event.last
-        = link_to root_path, class: 'cont__space__unit__more--button' do
-          %span.cont__space__unit__more__text イベントで利用できるスペースをもっと見る
+        = form_tag search_spaces_path, class: 'cont__space__unit__more--button', method: 'get' do
+          = hidden_field_tag 'purpose', 'イベント'
+          = submit_tag 'イベントで利用できるスペースをもっと見る', class: 'cont__space__unit__more__text', name: nil
           %i.fa.fa-angle-right.fa-lg
       - else
         %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
@@ -66,12 +76,14 @@
 .cont__space
   .cont__space__unit
     %h2.cont__space__unit__title#stay 宿泊
-    - @spaces.stay.each do |space|
-      = render space
+    %ul.row.clear-fix
+      - @spaces.stay.each do |space|
+        = render space
     .cont__space__unit__more
       - if @spaces.stay.last
-        = link_to root_path, class: 'cont__space__unit__more--button' do
-          %span.cont__space__unit__more__text 宿泊で利用できるスペースをもっと見る
+        = form_tag search_spaces_path, class: 'cont__space__unit__more--button', method: 'get' do
+          = hidden_field_tag 'purpose', '宿泊'
+          = submit_tag '宿泊で利用できるスペースをもっと見る', class: 'cont__space__unit__more__text', name: nil
           %i.fa.fa-angle-right.fa-lg
       - else
         %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
@@ -79,12 +91,14 @@
 .cont__space.cont__space--gray
   .cont__space__unit
     %h2.cont__space__unit__title#other その他
-    - @spaces.other.each do |space|
-      = render space
+    %ul.row.clear-fix
+      - @spaces.other.each do |space|
+        = render space
     .cont__space__unit__more
       - if @spaces.other.last
-        = link_to root_path, class: 'cont__space__unit__more--button' do
-          %span.cont__space__unit__more__text その他で利用できるスペースをもっと見る
+        = form_tag search_spaces_path, class: 'cont__space__unit__more--button', method: 'get' do
+          = hidden_field_tag 'purpose', 'その他'
+          = submit_tag 'その他で利用できるスペースをもっと見る', class: 'cont__space__unit__more__text', name: nil
           %i.fa.fa-angle-right.fa-lg
       - else
         %span.cont__space__unit__more__text.cont__space__unit__more__text--none 利用できるスペースはありません
