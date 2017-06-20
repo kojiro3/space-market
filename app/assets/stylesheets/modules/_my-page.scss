@@ -47,6 +47,7 @@
     min-height: 300px;
     height: calc( 100vh - 45px - 44px - 156px );
     background-color: $gray;
+    overflow-y: scroll;
     &__left {
       float: left;
       width: 250px;
