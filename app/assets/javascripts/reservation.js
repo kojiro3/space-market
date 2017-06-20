@@ -5,10 +5,6 @@ $(function() {
   $('.time-list-button').on('click', function(e) {
     e.preventDefault();
 
-    $('.reservation__right__form__date__day__name').removeClass('dark');
-    $('.reservation__right__form__date__day__name--day').removeClass('white');
-    $('.reservation__right__form__date__day__name--price').removeClass('white');
-
     $('.reservation__right__form__date__time').removeClass('hidden');
     $(this).parent().addClass('dark');
     $(this).find('.reservation__right__form__date__day__name--day').addClass('white');
@@ -41,6 +37,8 @@ $(function() {
       $(this).find('.reservation__right__form__date__time__list__right--price').addClass('white');
       var time = $(this).data('time');
       times.push(time);
+
+      $('.reservation__right__form').removeClass('hidden');
     })
 
     $('.js-form').on('submit', function(e) {

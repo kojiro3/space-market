@@ -75,9 +75,12 @@
                         = "#{i}:00 - #{i+1}:00"
                       %p.reservation__right__form__date__time__list__right--price
                         = "¥#{@space.price}"
-        .reservation__right__form
+        .reservation__right__form.clear-fix.hidden
           .reservation__right__form__submit
             = f.submit '予約リクエストを送信', class: 'reservation__right__form__submit__button'
+          .reservation__right__form__submit
+            = link_to new_space_reservation_path(@space), class: 'reservation__right__form__submit__button reservation__right__form__submit__button--cancel' do
+              日時変更
       .reservation__right__conf.hidden
         %h2.reservation__right__title 予約内容確認
         .reservation__right__confirm

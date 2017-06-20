@@ -173,11 +173,6 @@
           }
         }
       }
-
-
-
-
-
       &__date {
         float: left;
       }
@@ -208,7 +203,10 @@
         float: left;
       }
       &__submit {
-          margin: 36px 0 28px;
+          margin: 12px 24px 16px 0;
+          float: left;
+          width: 100%;
+          position: relative;
         &__button {
           background-color: $blue;
           border: none;
@@ -221,6 +219,13 @@
           cursor: pointer;
           &:hover {
             opacity: 0.7;
+          }
+          &--cancel {
+            background-color: $dark-gray;
+            margin-top: 10px;
+            position: absolute;
+            bottom: 32px;
+            left: 252px;
           }
         }
       }
