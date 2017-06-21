@@ -27,6 +27,8 @@ class SpacesController < ApplicationController
     @spaces = Space.where(purpose: params[:purpose]).order("created_at DESC")
   end
 
+  private
+
   def space_params
     params.require(:space).permit(:name, :image, :purpose, :text, :start, :finish, :postal_code, :prefecture, :city, :town, :building, :tel, :access, :price, :title, :number).merge(purpose: params[:purpose])
   end
