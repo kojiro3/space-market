@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609062917) do
+ActiveRecord::Schema.define(version: 20170621045455) do
 
   create_table "event_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "event_id"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20170609062917) do
     t.text     "body",        limit: 65535
     t.integer  "start"
     t.integer  "finish"
+    t.string   "title"
     t.index ["owner_id"], name: "index_spaces_on_owner_id", using: :btree
   end
 

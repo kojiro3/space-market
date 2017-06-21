@@ -9,8 +9,8 @@
 
 .space
   %P.space__intro
-    - if @space.body != ''
-      = @space.body
+    - if @space.title != ''
+      = @space.title
     - else
       = @space.name
   .space__image
@@ -32,8 +32,8 @@
       .space__info__title__wrapper
         .space__info__title__wrapper__main
           %h1.space__info__title__wrapper__main__name#title-buttom
-            - if @space.body != ''
-              = @space.body
+            - if @space.title != ''
+              = @space.title
             - else
               = @space.name
           %ul.clear-fix

@@ -36,8 +36,8 @@
             = link_to space_path(@space), class: 'reservation__left__info__body', data: {start: "#{@space.start}", finish: "#{@space.finish}", spaceid: "#{@space.id}", price: "#{@space.price}"} do
               = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
               %p.reservation__left__info__body__text
-                - if @space.body != ''
-                  = @space.body
+                - if @space.title != ''
+                  = @space.title
                 - else
                   = @space.name
     .space__info__detail
