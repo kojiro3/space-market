@@ -37,7 +37,7 @@
         %span.space-form__right__title__text スペースの見出し
         %span.space-form__right__title__plus 64文字以内。未入力時は会場名と同じ。
       .space-form__right__field
-        = f.text_field :body, class: 'space-form__right__field__name w500', placeholder: 'スペースマーケット、渋谷ビル等'
+        = text_field_tag 'space[body]', nil, {placeholder: 'スペースマーケット、渋谷ビル等', class: 'space-form__right__field__name w500'}
       .space-form__right__title
         %span.space-form__right__title__term 必須
         %span.space-form__right__title__text 会場の用途
@@ -70,7 +70,7 @@
       .space-form__right__field
         = f.text_area :text, class: 'space-form__right__field__text', placeholder: '大きな窓から入る自然光が印象的なスタジオです。イベントやセミナーはもちろん、撮影、展示会にも利用いただけます。'
       .space-form__right__title
-        %span.space-form__right__title__term.space-form__right__title__term--free 任意
+        %span.space-form__right__title__term.space-form__right__title__term--free 必須
         %span.space-form__right__title__text 営業時間について
       .space-form__right__field
         %span
