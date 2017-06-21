@@ -87,16 +87,17 @@
             %span.space__info__detail__wrapper__side__request__price--bold
               = "¥#{@reservation.price / @event.users.length}"
             %span.space__info__detail__wrapper__side__request__price /人
-            - if user_signed_in?
-              - if @event.users.include?(current_user)
-                = link_to "/spaces/#{@reservation.space.id}/reservations/#{@reservation.id}/events/#{@event.id}", method: 'delete' do
-                  %p.space__info__detail__wrapper__side__request__button イベントをキャンセルする
+            - if current_user != @event.users.first
+              - if user_signed_in?
+                - if @event.users.include?(current_user)
+                  = link_to "/spaces/#{@reservation.space.id}/reservations/#{@reservation.id}/events/#{@event.id}", method: 'delete' do
+                    %p.space__info__detail__wrapper__side__request__button イベントをキャンセルする
+                - else
+                  = link_to "/spaces/#{@reservation.space.id}/reservations/#{@reservation.id}/events/#{@event.id}", method: 'put' do
+                    %p.space__info__detail__wrapper__side__request__button イベントに参加する
               - else
-                = link_to "/spaces/#{@reservation.space.id}/reservations/#{@reservation.id}/events/#{@event.id}", method: 'put' do
-                  %p.space__info__detail__wrapper__side__request__button イベントに参加する
-            - else
-              = link_to new_user_session_path do
-                %p.space__info__detail__wrapper__side__request__button ログインしてイベントに参加
+                = link_to new_user_session_path do
+                  %p.space__info__detail__wrapper__side__request__button ログインしてイベントに参加
           .space__info__detail__wrapper__side__owner
             = image_tag "#{@event.users.first.image}", class: 'space__info__detail__wrapper__side__owner__image', alt: 'owner-image'
             %p.space__info__detail__wrapper__side__owner__intro このイベントの企画者

@@ -15,7 +15,10 @@
         = link_to space_path(@space), class: 'reservation__left__info__body' do
           = image_tag "#{@space.image}", class: 'reservation__left__info__body__image'
           %p.reservation__left__info__body__text
-            = @space.title
+            - if @space.title != ''
+              = @space.title
+            - else
+              = @space.name
     .reservation__right
       %h2.reservation__right__title 予約内容確認
       .reservation__right__confirm
