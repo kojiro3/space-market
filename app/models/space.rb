@@ -3,7 +3,7 @@ class Space < ApplicationRecord
   has_many :reservations
   has_many :events
 
-  validates :name, :purpose, :text, :postal_code, :prefecture, :city, :town, :tel, :access, :number, presence: true
+  validates :name, :purpose, :text, :postal_code, :prefecture, :city, :town, :tel, :access, :number, :start, :finish, presence: true
   validates :name, length: { maximum: 50 }
   validates :body, length: { maximum: 64 }
   validates :text, length: { in: 10..800 }

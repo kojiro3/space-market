@@ -9,7 +9,6 @@ class SpacesController < ApplicationController
   end
 
   def create
-    binding.pry
     @space = current_owner.spaces.new(space_params)
     if @space.save
       redirect_to root_path, notice: 'スペースを投稿しました'
